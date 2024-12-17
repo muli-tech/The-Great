@@ -405,7 +405,7 @@ export async function handler(chatUpdate) {
           __dirname: ___dirname,
           __filename,
         }
-        /* try {
+        try {
           // Safely call the plugin
           await Promise.resolve(plugin.call(this, m, extra));
           
@@ -456,7 +456,7 @@ export async function handler(chatUpdate) {
           if (m.credit) {
             m.reply(`You used *${+m.credit}*`);
           }
-        } */
+        }
         
       }
     }
