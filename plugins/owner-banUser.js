@@ -12,7 +12,7 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
 ✅ BANNED
 
 ───────────
-@${who.split`@`[0]} you will no longer be able to use my commands `, m, { mentions: [who] })
+@${who.split`@`[0]} you will no longer be able to use my commands, contact admin for more info `, m, { mentions: [who] })
 }
 handler.help = ['ban @user']
 handler.tags = ['owner']

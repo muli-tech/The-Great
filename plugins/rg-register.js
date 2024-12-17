@@ -12,7 +12,7 @@ let handler = async function (m, { conn, text, usedPrefix, command }) {
   if (!age) throw '✳️ age cannot be empty'
   if (name.length >= 30) throw '✳️The name is too long' 
   age = parseInt(age)
-  if (age > 100) throw '👴🏻 Wow grandpa wants to play bot'
+  if (age > 25) throw '👴🏻 Wow grandpa wants to play bot'
   if (age < 5) throw '🚼  there is a grandpa baby jsjsj '
   user.name = name.trim()
   user.age = age

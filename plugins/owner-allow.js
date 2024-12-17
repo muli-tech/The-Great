@@ -14,7 +14,7 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
     handler.tags = ['owner']
     handler.command = ['allow', 'makeallow', 'al'] 
     
-    handler.group = true
+   // handler.group = true
     handler.rowner = true
     
     export default handler

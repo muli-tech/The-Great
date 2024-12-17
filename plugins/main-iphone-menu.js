@@ -7,8 +7,8 @@ const { levelling } = '../lib/levelling.js'
 import moment from 'moment-timezone'
 import { promises } from 'fs'
 import { join } from 'path'
-const time = moment.tz('Asia/Kolkata').format('HH')
-let wib = moment.tz('Asia/Kolkata').format('HH:mm:ss')
+const time = moment.tz('Africa/Nairobi').format('HH')
+let wib = moment.tz('Africa/Nairobi').format('HH:mm:ss')
 //import db from '../lib/database.js'
 
 let handler = async (m, { conn, usedPrefix, command}) => {
@@ -41,9 +41,9 @@ let str = `
   ཌ|━━🤖 _BOT STATUS:_🤖━━|ད
   ⚀------- *IPHONE-MENU* ------⚀
 
-┌─𐂅  *MADE BY XLICON*  𐂅
-| ❁✓  *Creator:* XLICON-TEAM
-| 🤖  *Bot Name:* XLICON-V2
+┌─𐂅  *MADE BY ‖⫷※•şɐɱʉ•※⫸‖*  𐂅
+| ❁✓  *Creator:* ‖⫷※•şɐɱʉ•※⫸‖TEAM
+| 🤖  *Bot Name:* ‖⫷※•şɐɱʉ•※⫸‖
 | 💻  *Host:* Linux 🟩
 | 📣  *Prefix:* ${usedPrefix} 
 | 🕓  *Uptime:* ${uptime}
@@ -59,7 +59,7 @@ let str = `
 ┌─𐂅「 *👤USER* 」
 | 👾  *User Tag:* ${taguser} 
 | 😇  *Name:* ${name} 
-| ✰  *Master Mind:* AB&SALMAN
+| ✰  *Master Mind:* Samuel
 | 💎  *Diamonds:* -9999
 | 🏆  *Rank:* ${role}
 | 🎮  *XP:* ${exp} 
@@ -549,7 +549,7 @@ let str = `
 ┌─➢『 *_conversion_* 』❖
 ┃❏*convert
 ╰─────────────────➢
-XLICON-𝙼𝙳-𝚅𝟸 𝙱𝚈 AB AND SALMAN`
+‖⫷※•şɐɱʉ•※⫸‖ 𝙱𝚈 SaMu`
 
 
     conn.sendFile(m.chat, pp, 'perfil.jpg', str, m, null, rpyt)
@@ -568,7 +568,7 @@ function clockString(ms) {
     return [h, m, s].map(v => v.toString().padStart(2, 0)).join(':')}
     
     function ucapan() {
-      const time = moment.tz('Asia/Kolkata').format('HH')
+      const time = moment.tz('Africa/Nairobi').format('HH')
       let res = "happy early in the day☀️"
       if (time >= 4) {
         res = "Good Morning 🌄"

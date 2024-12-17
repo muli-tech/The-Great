@@ -5,8 +5,8 @@ import fetch from 'node-fetch';
 import fs from 'fs';
 import moment from 'moment-timezone';
 
-const time = moment.tz('Asia/Kolkata').format('HH');
-let wib = moment.tz('Asia/Kolkata').format('HH:mm:ss');
+const time = moment.tz('Africa/Nairobi').format('HH');
+let wib = moment.tz('Africa/Nairobi').format('HH:mm:ss');
 
 let handler = async (m, { conn, usedPrefix, command }) => {
     let d = new Date(new Date + 3600000);
@@ -41,7 +41,7 @@ let handler = async (m, { conn, usedPrefix, command }) => {
 🌠 *_Bible quote of the day: ${quote}_* 🌠
 
 ┏━━🤖 _BOT STATUS:_🤖━━┓
-┃ 🏮  *Founder:* Salman Ahmad
+┃ 🏮  *Founder:* Samuel
 ┃ 🤡  *Bot Name:* ${botname} 
 ┃ 💻  *Host:* Kali Linux
 ┃ 📣  *Prefix:* ${usedPrefix} 
@@ -84,7 +84,7 @@ function clockString(ms) {
 }
 
 function ucapan() {
-    const time = moment.tz('Asia/Kolkata').format('HH');
+    const time = moment.tz('Africa/Nairobi').format('HH');
     let res = "happy early in the day☀️";
     if (time >= 4) {
         res = "Good Morning 🌄";

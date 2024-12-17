@@ -10,26 +10,20 @@ const defaultMenu = {
   「 ${botname} 🎁XMD 」
   *%ucpn*
 ⍟────────────────⍟
-*REMEMBER THIS BOT IS FOR EDUCATIONAL PURPOSES*
+**
 ⍟────────────────⍟
-*©Salman Ahmad*
+*©*
 ⍟────────────────⍟
-*_Konnichiwa! It's XLICON-MD A Multi-Device Whatsapp BOT_*
-*_Recoded By Salman Ahmad And Abraham Dwamena_*
+*_Nikwakya! It's ‖⫷※•şɐɱʉ•※⫸‖ A Multi-Device Whatsapp BOT_*
+*_Recoded By  Samuel Muli_*
 ⍟────────────────⍟
-                                   
- ▀▄▀ █░░ █ █▀▀ █▀█ █▄░█  
- █░█ █▄▄ █ █▄▄ █▄█ █░▀█  
-          
- █▀▄▀█ █▀▄
- █░▀░█ █▄▀
 
 ╭─────────────────⦿
 ┃   🔰〘 𝙄𝙉𝙁𝙊 〙🔰
 ╰┬────────────────⦿
 ┌┤
 ┃
-┃ *_Founder_*: Salman Ahmad 
+┃ *_Founder_*:  
 ┃ *_Bot Name_*: ${botname}
 ┃ *_Mode_*: %mode
 ┃ *_HOST_*: Kali Linux
@@ -47,7 +41,7 @@ const defaultMenu = {
 ┃
 ┃ *_Name_*: %name
 ┃ *_Gold_*: %credit
-┃ *_Role_*: XLICON-MD-TESTER
+┃ *_Role_*: Undefined
 ┃ *_Level_*: %level [%xp4levelup XP for level up]
 ┃ *_Xp_*: %exp / %maxexp
 ┃ *_Total Xp_*: %totalexp
@@ -241,7 +235,7 @@ function clockStringP(ms) {
 }
 
 function ucapan() {
-  const time = moment.tz("Asia/Kolkata").format("HH");
+  const time = moment.tz("Africa/Nairobi").format("HH");
   if (time >= 18) return "Good Night 🌙";
   if (time >= 15) return "Good Afternoon 🌇";
   if (time >= 10) return "Good Afternoon ☀️";
