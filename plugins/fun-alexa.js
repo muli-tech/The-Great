@@ -9,15 +9,31 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
   m.react('🗣️');
 
   const msg = encodeURIComponent(text);
+  const apiUrl = `https://api.giftedtech.my.id/api/ai/gpt4-o?apikey=gifted&q=${msg}`;
   
-  const res = await fetch(`https://api.giftedtech.my.id/api/ai/gpt4-o?apikey=gifted&q==${msg}`);
-  
-  const json = await res.json();
-  
-  
-  let reply = json.result.response;
+  try {
+    // Attempt to fetch the response
+    const res = await fetch(apiUrl);
+
+    // Check for HTTP errors
+    if (!res.ok) {
+      throw new Error(`❌ API responded with status: ${res.status} ${res.statusText}`);
+    }
+
+    const json = await res.json();
+
+    // Validate API response structure
+    if (!json || !json.result || !json.result.response) {
+      throw new Error("❌ Invalid API response structure.");
+    }
+
+    let reply = json.result.response;
     m.reply(reply);
 
+  } catch (err) {
+    console.error(`❌ Error fetching response from API:`, err.message);
+    m.reply("⚠️ Sorry, I couldn't process your request. The server might be down or unreachable. Please try again later.");
+  }
 };
 
 handler.help = ['bot'];
