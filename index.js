@@ -10,97 +10,95 @@ import cfonts from 'cfonts';
 
 const { say } = cfonts;
 
+// Styled terminal output
 say("SaMu ", {
-  'font': "block",
-  'align': "center",
-  'colors': ['#ff9900'],
-  'background': "transparent",
-  'letterSpacing': 1,
-  'lineHeight': 1,
-  'space': true,
-  'maxLength': '15'
+  font: "block",
+  align: "center",
+  colors: ['#ff9900'],
+  background: "transparent",
+  letterSpacing: 1,
+  lineHeight: 1,
+  space: true,
+  maxLength: '15'
 });
 
 say("SaMu-BOT By SaMu._.", {
-  'font': "chrome",
-  'align': "center",
-  'colors': ["red", "magenta"],
-  'background': "transparent",
-  'letterSpacing': 1,
-  'lineHeight': 1,
-  'space': true,
-  'maxLength': '30'
+  font: "chrome",
+  align: "center",
+  colors: ["red", "magenta"],
+  background: "transparent",
+  letterSpacing: 1,
+  lineHeight: 1,
+  space: true,
+  maxLength: '30'
 });
 
+// Initialize Express
 const app = express();
 const port = process.env.PORT || 8080;
-const basePath = decodeURIComponent(new URL(import.meta.url).pathname);
-const htmlDir = path.join(path.dirname(basePath), 'Assets');
 
-// Serve HTML pages
-const sendHtml = (res, page) => {
-  res.sendFile(path.join(htmlDir, page + ".html"));
-};
+// Ensure cross-platform compatibility for file paths
+const __dirname = path.dirname(decodeURIComponent(new URL(import.meta.url).pathname).replace(/^\/([A-Z]:)/, '$1'));
 
-app.get('/', (req, res) => sendHtml(res, "guru"));
+// Serve static HTML files from "Assets" folder
+const htmlDir = path.join(__dirname, 'Assets');
+app.use(express.static(htmlDir));
 
+// Default route
+app.get('/', (req, res) => {
+  res.sendFile(path.join(htmlDir, "guru.html"));
+});
+
+// Start the server
 app.listen(port, () => {
   console.log(chalk.green(`Server is running on port ${port}`));
 });
 
 let isRunning = false;
 
+// Function to start/restart the child process
 async function start(scriptName) {
   if (isRunning) return;
   isRunning = true;
 
-  let currentScriptPath = decodeURIComponent(new URL(import.meta.url).pathname);
-  
-  // Fix for duplicate "C:\" issue on Windows
-  if (currentScriptPath.startsWith('/')) {
-    currentScriptPath = currentScriptPath.substring(1); // Remove the leading slash
-  }
-  currentScriptPath = path.resolve(currentScriptPath);
+  const scriptPath = path.join(__dirname, scriptName);
 
-  const scriptArgs = [path.join(path.dirname(currentScriptPath), scriptName), ...process.argv.slice(2)];
-
-  const childProcess = spawn(process.argv[0], scriptArgs, {
-    'stdio': ["inherit", "inherit", "inherit", "ipc"]
+  const childProcess = spawn(process.argv[0], [scriptPath, ...process.argv.slice(2)], {
+    stdio: ["inherit", "inherit", "inherit", "ipc"]
   });
 
+  // Handle messages from child process
   childProcess.on("message", msg => {
     console.log(chalk.cyan(`✔️ RECEIVED: ${msg}`));
-    switch (msg) {
-      case "reset":
-        childProcess.kill();
-        isRunning = false;
-        start.apply(this, arguments);
-        break;
-      case 'uptime':
-        childProcess.send(process.uptime());
-        break;
+    if (msg === "reset") {
+      childProcess.kill();
+      isRunning = false;
+      start(scriptName);
     }
   });
 
+  // Handle child process exit
   childProcess.on("exit", exitCode => {
     isRunning = false;
-    console.error(chalk.red(`❌ Exited with code: ${exitCode}`));
-    if (exitCode === 0) return;
-    fs.watchFile(scriptArgs[0], () => {
-      fs.unwatchFile(scriptArgs[0]);
-      start("./XLICON.js");
-    });
+    console.error(chalk.red(`❌ Process exited with code: ${exitCode}`));
+    if (exitCode !== 0) {
+      fs.watchFile(scriptPath, () => {
+        fs.unwatchFile(scriptPath);
+        start(scriptName);
+      });
+    }
   });
 
+  // Handle errors
   childProcess.on("error", err => {
     console.error(chalk.red(`Error: ${err}`));
     childProcess.kill();
     isRunning = false;
-    start('./XLICON.js');
+    start(scriptName);
   });
 
-  const pluginsDir = path.join(path.dirname(currentScriptPath), "plugins");
-
+  // Plugins Management
+  const pluginsDir = path.join(__dirname, "plugins");
   fs.readdir(pluginsDir, async (err, files) => {
     if (err) {
       console.error(chalk.red(`Error reading plugins folder: ${err}`));
@@ -112,23 +110,21 @@ async function start(scriptName) {
       const latestBaileysVersion = (await baileys.fetchLatestBaileysVersion()).version;
       console.log(chalk.yellow(`Using Baileys version ${latestBaileysVersion}`));
     } catch (err) {
-      console.error(chalk.red(" Baileys library is not installed"));
+      console.error(chalk.red("Baileys library is not installed or failed to fetch version."));
     }
   });
 }
 
-
+// Start the bot
 start('./XLICON.js');
 
-
-process.on("unhandledRejection", () => {
-  console.error(chalk.red("Unhandled promise rejection. Bot will restart..."));
+// Graceful error handling
+process.on("unhandledRejection", err => {
+  console.error(chalk.red("Unhandled promise rejection:", err));
   start("./XLICON.js");
 });
 
-
-process.on("exit", exitCode => {
-  console.error(chalk.red(`Exited with code: ${exitCode}`));
-  console.error(chalk.red("Bot will restart..."));
+process.on("exit", code => {
+  console.error(chalk.red(`Process exited with code: ${code}. Restarting...`));
   start("./XLICON.js");
 });
