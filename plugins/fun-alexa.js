@@ -10,7 +10,7 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
 
   const msg = encodeURIComponent(text);
   
-  const res = await fetch(`https://ultimetron.guruapi.tech/rekha?prompt=${msg}`);
+  const res = await fetch(`https://api.giftedtech.my.id/api/ai/gpt4-o?apikey=gifted&q==${msg}`);
   
   const json = await res.json();
   

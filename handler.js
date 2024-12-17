@@ -406,41 +406,58 @@ export async function handler(chatUpdate) {
           __filename,
         }
         try {
-          await plugin.call(this, m, extra)
-          if (!isPrems) m.credit = m.credit || plugin.credit || false
+          // Safely call the plugin
+          await Promise.resolve(plugin.call(this, m, extra));
+          
+          if (!isPrems) m.credit = m.credit || plugin.credit || false;
         } catch (e) {
-          // Error occured
-          m.error = e
-          console.error(e)
-          if (e) {
-            let text = format(e)
-            for (let key of Object.values(global.APIKeys))
-              text = text.replace(new RegExp(key, 'g'), '#HIDDEN#')
-            if (e.name)
+          m.error = e;
+          console.error(chalk.red(`❌ Error in plugin: ${m.plugin}`), e);
+        
+          let text = format(e);
+        
+          // Hide sensitive API keys
+          for (let key of Object.values(global.APIKeys)) {
+            text = text.replace(new RegExp(key, 'g'), '#HIDDEN#');
+          }
+        
+          // Report error to developers if e.name exists
+          if (e.name) {
+            try {
               for (let [jid] of global.owner.filter(
                 ([number, _, isDeveloper]) => isDeveloper && number
               )) {
-                let data = (await this.onWhatsApp(jid))[0] || {}
-                if (data.exists)
-                  return m.reply(
+                let data = (await this.onWhatsApp(jid))[0] || {};
+                if (data.exists) {
+                  await m.reply(
                     `*🗂️ Plugin:* ${m.plugin}\n*👤 Sender:* ${m.sender}\n*💬 Chat:* ${m.chat}\n*💻 Command:* ${usedPrefix}${command} ${args.join(' ')}\n📄 *Error Logs:*\n\n${text}`.trim(),
                     data.jid
-                  )
+                  );
+                }
               }
-            m.reply(text)
-          }
-        } finally {
-          // m.reply(util.format(_user))
-          if (typeof plugin.after === 'function') {
-            try {
-              await plugin.after.call(this, m, extra)
-            } catch (e) {
-              console.error(e)
+            } catch (err) {
+              console.error(chalk.yellow("⚠️ Failed to notify developer"), err);
             }
           }
-          if (m.credit) m.reply(`You used *${+m.credit}*`)
+        
+          // Reply error message to the user
+          m.reply(text || "⚠️ An unknown error occurred.");
+        } finally {
+          // Safely call plugin.after
+          if (typeof plugin.after === 'function') {
+            try {
+              await Promise.resolve(plugin.after.call(this, m, extra));
+            } catch (e) {
+              console.error(chalk.red(`❌ Error in plugin.after: ${m.plugin}`), e);
+            }
+          }
+        
+          // Respond with credit info
+          if (m.credit) {
+            m.reply(`You used *${+m.credit}*`);
+          }
         }
-        break
+        
       }
     }
   } catch (e) {
