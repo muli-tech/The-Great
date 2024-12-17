@@ -1,4 +1,5 @@
-const axios = require('axios');
+//const axios = import('axios');
+import axios from 'axios';
 
 let handler = async (m, { conn, text, usedPrefix, command }) => {
     // Initialize sessionAI object
