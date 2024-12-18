@@ -1,17 +1,39 @@
 import axios from 'axios';
 
-let handler = async (m, { conn, command, text, usedPrefix }) => {
-  if (!text) {
-    throw `Please provide link . Example: ${usedPrefix + command} <query>`;
-  }
-  await m.react('⏳');
+let handler = async (m, { conn, text, usedPrefix }) => {
+  if (!text) throw '✳️ What do you want me to search for on YouTube?';
+
   try {
     const query = encodeURIComponent(text);
-    const title = text; 
+    const response = await axios.get(`https://weeb-api.vercel.app/ytsearch?query=${query}`);
+    const results = response.data;
 
-    var aud = `https://ironman.koyeb.app/ironman/dl/yta?url=${query}`;
+    if (results.length === 0) {
+      throw 'No results found for the given query.';
+    }
+
+    const firstResult = results[0];
+
+ const message = `
+───────────────
+✨ ${firstResult.title} ✨
+───────────────
+🖇️ *Link*: ${firstResult.url} ${firstResult.url}  
+⏱️ *Duration*: ${firstResult.timestamp}  
+📅 *Published*: ${firstResult.ago}  
+👁️ *Views*: ${firstResult.views}  
+     *MADE WITH LOVE BY ‖⫷※•şɐɱʉ•※⫸‖*
+───────────────
+`;
+    await conn.sendFile(m.chat, firstResult.thumbnail, 'yts.jpeg', message, m);
+    
+    await m.react('⏳');
+    
+    const downloadUrl = `https://ironman.koyeb.app/ironman/dl/yta?url=${encodeURIComponent(firstResult.url)}`;
+    const title = firstResult.title;
+
     await conn.sendMessage(m.chat, {
-      audio: { url: aud },
+      audio: { url: downloadUrl },
       mimetype: 'audio/mpeg',
       ptt: false,
       fileName: title,
@@ -19,13 +41,12 @@ let handler = async (m, { conn, command, text, usedPrefix }) => {
 
   } catch (error) {
     console.error(error);
-    throw 'verify it is a link.';
+    throw 'An error occurred while processing your request.';
   }
 };
 
-handler.help = ['ytm'].map(command => command + ' <query>');
+handler.help = ['search and dl'];
 handler.tags = ['downloader'];
-handler.command = /^ytm$/i;
-handler.exp = 0;
+handler.command = ['ytm', 'music'];
 
 export default handler;

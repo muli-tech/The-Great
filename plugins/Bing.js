@@ -6,7 +6,7 @@ let handler = async (m, { conn, text, args, usedPrefix, command }) => {
     await m.react('🤖');
 
     const prompt = encodeURIComponent(text);
-    let apiurl = `https://gpt4.guruapi.tech/bing?username=defailt&query=${prompt}`;
+    let apiurl = `https://api.giftedtech.my.id/api/ai/gpt4v2?apikey=gifted&q=${prompt}`;
 
     const result = await fetch(apiurl);
     const response = await result.json();
@@ -21,7 +21,7 @@ let handler = async (m, { conn, text, args, usedPrefix, command }) => {
       'https://techcrunch.com/wp-content/uploads/2023/11/microsoft-copilot-bing.jpg', 
       [['Script', `${usedPrefix}waifu`]], 
       null, 
-      [['Fork repo', `https://github.com/salmanytofficial/XLICON-V2-MD`]], 
+      [['Fork repo', `https://github.com/muli-tech/The-Great`]], 
       m
     );
   } catch (error) {
