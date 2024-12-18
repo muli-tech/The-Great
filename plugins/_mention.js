@@ -1,11 +1,3 @@
-//Guru ka Maal Hai 
-//Made For Guru Bot
-//created on Diwali(12th Nov)
-//copy with credits
-//lodusheks stay away
-
-
-
 /* let handler = m => m
 handler.all = async function (m, conn) {
     var vn = "./Assets/ALIVE.mp3"

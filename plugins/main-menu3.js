@@ -64,7 +64,7 @@ let str = ` *☑️‖⫷※•şɐɱʉ•※⫸‖ BOT☑️*
     m.react(done)
 
 }
-handler.help = ['main3']
+handler.help = ['menu3']
 handler.tags = ['group']
 handler.command = ['menu3', 'help3','h','commands'] 
 

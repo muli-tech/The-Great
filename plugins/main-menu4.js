@@ -568,8 +568,8 @@ import {
   };
   
   
-  handler.help = ["play"];
-  handler.tags = ["downloader"];
+  //handler.help = ["play"];      //inconviniences in this section
+  //handler.tags = ["downloader"];
   handler.command = /^(menu4)$/i;
   handler.limit = true;
   export default handler;

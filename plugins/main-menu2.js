@@ -70,7 +70,7 @@ let handler = async (m, { conn, usedPrefix, command }) => {
     m.react(done);
 };
 
-handler.help = ['main2'];
+handler.help = ['menu2'];
 handler.tags = ['group'];
 handler.command = ['menu2', 'help2'];
 
