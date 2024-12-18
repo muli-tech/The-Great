@@ -26,5 +26,5 @@ let handler = async m => {
 
 handler.help = ['bchannel'];
 handler.tags = ['main'];
-handler.command = ['xlchannel', 'bchannel'];
+handler.command = ['samuchannel', 'bchannel'];
 export default handler;

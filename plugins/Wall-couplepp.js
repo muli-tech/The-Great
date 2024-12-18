@@ -9,7 +9,7 @@ let handler = async (m, { conn }) => {
   let ciwi = await(await fetch(cita.cewe)).buffer()
   await conn.sendFile(m.chat, ciwi, '', '♀️ Girl👰', m)
 }
-handler.help = ['ppcouple', 'ppcp']
+handler.help = ['ppcouple']
 handler.tags = ['img']
 handler.command = ['couplepp','ppcouple'] 
 

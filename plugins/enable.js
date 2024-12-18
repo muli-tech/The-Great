@@ -230,13 +230,13 @@ _________________________
 🔰 *antispam* : _removes members who spam too much in gc_
 _________________________
 🔰 *antitoxic* : _deleted all toxic words sent by anyone_
-╰──────────⳹ 
+╰──────────────────────────────────────────────⳹ 
 ◈──『 *USERS*』───⳹
 🔰 *autolevelup* : _Automatically levels up exp on user_
 🔰 *chatbot* : _Turns on the chat bot to be able to chat with the bot_
-╰──────────⳹
+╰──────────────────────────────────────────────⳹
 ◈──『 *OWNER*』───⳹
-🔰 onlydm : _Can use bot in private msg_
+🔰 *onlydm* : _Can use bot in private msg_
 _________________________
 🔰 *grouponly* :_can use bot in groups only_
 _________________________
@@ -244,9 +244,8 @@ _________________________
 _________________________
 🔰 *autobio* : _enables  automatic bio of the bot also you will see that bot is running through this_
 _________________________
-__X_L_I_C_O_N_____BOT
-*XLICON-V2* enc-x
-╰──────────©
+__‖⫷※•şɐɱʉ•※⫸‖_____BOT
+╰──────────────────────────────────────────────©
 *📌 Example :*
 *${usedPrefix}on* welcome
 *${usedPrefix}off* welcome
@@ -255,7 +254,7 @@ __X_L_I_C_O_N_____BOT
   }
 
 m.reply(`
-✅ *${type}* Now *${isEnable ? 'Active' : 'Deactive'}* ${isAll ? 'for this bot' : isUser ? '' : 'for this bot'}
+✅ *${type}* Now *${isEnable ? 'Active' : 'Deactive'}* ${isAll ? 'for ‖⫷※•şɐɱʉ•※⫸‖' : isUser ? '' : 'for ‖⫷※•şɐɱʉ•※⫸‖'}
 `.trim()) 
 
 }

@@ -56,8 +56,8 @@ global.dygp = 'https://chat.whatsapp.com'
 global.fgsc = 'https://github.com/Samuel-Muli/XLICON-V2-MD' 
 global.fgyt = 'https://youtube.com/'
 global.fgpyp = 'https://youtube.com/'
-global.fglog = 'XLICON.jpg' 
-global.thumb = fs.readFileSync('./XLICON.jpg')
+global.fglog = 'samu1.jpg' 
+global.thumb = fs.readFileSync('./samu1.jpg')
 
 global.wait = '*🕣 _‖⫷※•şɐɱʉ•※⫸‖ IS LOADING..._*\n*▰▰▰▱▱▱▱▱⭐*'
 global.rwait = '⌛'

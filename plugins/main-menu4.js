@@ -643,7 +643,7 @@ import {
       }, { quoted:fcontact });
       } else if (choice === "7") {
         await conn.sendMessage(m.chat, { image: { url: 'https://telegra.ph/file/087410e10ba5b08083295.jpg' },
-        caption: groupmenu
+        caption: gamemenu
       }, { quoted:fcontact });
       } else if (choice === "8") {
         await conn.sendMessage(m.chat, { image: { url: 'https://telegra.ph/file/087410e10ba5b08083295.jpg' },

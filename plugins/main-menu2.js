@@ -19,7 +19,7 @@ let handler = async (m, { conn, usedPrefix, command }) => {
     
     if (!(who in global.db.data.users)) throw `✳️ The user is not found in my database`;
     
-    let pp = './Assets/XLICON-V2.jpg';
+    let pp = './Assets/samu.jpg';
     let user = global.db.data.users[who];
     let { name, exp, diamond, lastclaim, registered, regTime, age, level, role, warn } = global.db.data.users[who];
     let { min, xp, max } = xpRange(user.level, global.multiplier);
@@ -70,7 +70,7 @@ let handler = async (m, { conn, usedPrefix, command }) => {
     m.react(done);
 };
 
-handler.help = ['main'];
+handler.help = ['main2'];
 handler.tags = ['group'];
 handler.command = ['menu2', 'help2'];
 

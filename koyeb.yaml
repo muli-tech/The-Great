@@ -8,10 +8,10 @@ RUN dnf -y update && \
     dnf install -y git ffmpeg ImageMagick nodejs yarnpkg libwebp && \
     dnf clean all -y
 
-RUN git clone https://github.com/salmanytofficial/XLICON-V2-MD
+RUN git clone https://github.com/muli-tech/The-Great
 
 # Set the working directory
-WORKDIR /XLICON-V2-MD
+WORKDIR /The-Great
 
 # Install dependencies
 RUN yarn install

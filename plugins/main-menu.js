@@ -7,22 +7,16 @@ import fetch from "node-fetch";
 
 const defaultMenu = {
   before: `
-  「 ${botname} 🎁XMD 」
+  「 ${botname} 🎁 MD 」
   *%ucpn*
-⍟────────────────⍟
-**
-⍟────────────────⍟
-*©*
+
 ⍟────────────────⍟
 *_Nikwakya! It's ‖⫷※•şɐɱʉ•※⫸‖ A Multi-Device Whatsapp BOT_*
 *_Recoded By  Samuel Muli_*
-⍟────────────────⍟
-
 ╭─────────────────⦿
 ┃   🔰〘 𝙄𝙉𝙁𝙊 〙🔰
 ╰┬────────────────⦿
 ┌┤
-┃
 ┃ *_Founder_*:  
 ┃ *_Bot Name_*: ${botname}
 ┃ *_Mode_*: %mode
@@ -32,20 +26,17 @@ const defaultMenu = {
 ┃ *_Prefix_*: [ *%_p* ]
 ┃ *_Uptime_*: %muptime
 ┃ *_Database_*: %totalreg
-┃
 ╰──────────────────⦿
 ╭──────────────────⦿
 ┃    🔰〘 𝙐𝙎𝙀𝙍 〙🔰
 ╰┬─────────────────⦿
 ┌┤     
-┃
 ┃ *_Name_*: %name
 ┃ *_Gold_*: %credit
 ┃ *_Role_*: Undefined
 ┃ *_Level_*: %level [%xp4levelup XP for level up]
 ┃ *_Xp_*: %exp / %maxexp
 ┃ *_Total Xp_*: %totalexp
-┃
 ╰──────────────────⦿
 ╭──────────────────⦿
 ┃   🔰〘 𝑰𝑵𝑭𝑶 𝑪𝑴𝑫 〙🔰
@@ -183,7 +174,7 @@ let handler = async (m, { conn, usedPrefix: _p, __dirname, args }) => {
 
     text = text.replace(new RegExp(`%(${Object.keys(replacements).sort((a, b) => b.length - a.length).join("|")})`, "g"), (_, name) => replacements[name]);
 
-    const pp = "./Assets/XLICON-V2.jpg";
+    const pp = "./Assets/samu.jpg";
 
     let contact = {
       key: {

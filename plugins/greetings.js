@@ -23,7 +23,8 @@ export async function all(m) {
     'hi',
     'Heey',
     'Sam',
-    'SaMu'
+    'SaMu',
+    'niaje'
   ];
 
   if (

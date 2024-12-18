@@ -20,7 +20,7 @@ let lkr = `
 conn.sendFile(m.chat, pp, 'perfil.jpg', lkr, m, false, { mentions: [who] })
 m.react(done)
 }
-handler.help = ['allmenu']
+handler.help = ['studymenu']
 handler.tags = ['main']
 handler.command = ['study', 'sd', 'studymenu'] 
 

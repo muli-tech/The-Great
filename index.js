@@ -116,15 +116,15 @@ async function start(scriptName) {
 }
 
 // Start the bot
-start('./XLICON.js');
+start('./thegreat.js');
 
 // Graceful error handling
 process.on("unhandledRejection", err => {
   console.error(chalk.red("Unhandled promise rejection:", err));
-  start("./XLICON.js");
+  start("./thegreat.js");
 });
 
 process.on("exit", code => {
   console.error(chalk.red(`Process exited with code: ${code}. Restarting...`));
-  start("./XLICON.js");
+  start("./thegreat.js");
 });

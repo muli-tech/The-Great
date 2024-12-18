@@ -556,9 +556,9 @@ let str = `
     m.react(done)
 
 }
-handler.help = ['main']
+handler.help = ['imenu']
 handler.tags = ['group']
-handler.command = ['menu1', 'imenu'] 
+handler.command = ['menu1', 'imenu', 'menui'] 
 
 export default handler
 function clockString(ms) {
