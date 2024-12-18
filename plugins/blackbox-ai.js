@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const endpoint = 'https://mzn-bbox.onrender.com/bb?ask=';
+const endpoint = 'https://api.giftedtech.my.id/api/ai/gpt4?apikey=gifted&q=';
 
 let handler = async (m, { text, conn, usedPrefix, command }) => {
   try {

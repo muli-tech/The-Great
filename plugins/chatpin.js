@@ -1,5 +1,6 @@
 let handler = async (m, { conn, args }) => {
-conn.reply(m.chat, 'Chat pinned 📌', m)
+//conn.reply(m.chat, 'Chat pinned 📌', m)
+m.react("📌")
 await conn.chatModify({ pin: true }, m.chat)
 }
 
