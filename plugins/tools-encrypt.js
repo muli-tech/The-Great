@@ -9,4 +9,6 @@ let obfuscatedCode = await obfuscateCode(text);
 conn.sendMessage(m.chat, {text: obfuscatedCode}, {quoted: m});
 }
 handler.command = /^(ofuscar|ofuscador|obs)$/i
+handler.tag = ['tools'];
+handler.help = ['obs'];
 export default handler

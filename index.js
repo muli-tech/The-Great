@@ -22,7 +22,7 @@ say("SaMu ", {
   maxLength: '15'
 });
 
-say("SaMu-BOT By SaMu._.", {
+say("SaMu-BOT By SaMu", {
   font: "chrome",
   align: "center",
   colors: ["red", "magenta"],

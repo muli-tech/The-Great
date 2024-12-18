@@ -51,7 +51,7 @@ let imdbHandler = async (m, { conn, text }) => {
   }
 };
 
-imdbHandler.help = ['imdb'];
+imdbHandler.help = ['movie'];
 imdbHandler.tags = ['tools'];
 imdbHandler.command = /^(imdb|movie)$/i;
 

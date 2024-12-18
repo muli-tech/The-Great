@@ -239,7 +239,6 @@ let str = `
 ┃❏*resetprefix
 ┃❏*restart
 ┃❏*.setprefix
-┃❏*.setprefix [symbol]
 ┃❏*unban @user
 ┃❏*unbanchat
 ┃❏*update
@@ -260,48 +259,14 @@ let str = `
 ┃❏*gay @user
 ┃❏*joke
 ┃❏*pickupline
-┃❏*question
-┃❏*shayari
 ┃❏*ship
-┃❏*yomamajoke
 ┃❏*truth
 ┃❏*waste @user
-┃❏*perv
-┃❏*handsome
-┃❏*hot
-┃❏*sexy
-┃❏*ugly
-┃❏*cute
-┃❏*playboy
-┃❏*playgirl
-┃❏*beautiful
-┃❏*lesbian
-┃❏*whore
 ┃❏*motherfucker
 ┃❏*sucker
 ┃❏*horny
-┃❏*foolish
-┃❏*nibba
-┃❏*nibbi
-┃❏*bitch
-┃❏*waifu
-┃❏*crackhead
-┃❏*rascal
-┃❏*idiot
-┃❏*girlyboy
-┃❏*tomboy
-┃❏*gigachad
-┃❏*mf
-┃❏*introvert
-┃❏*extrovert
-┃❏*sigma
-┃❏*psycho
-┃❏*brainless
-┃❏*useless
-┃❏*singer
 ┃❏*image
 ┃❏*meme
-┃❏*quote
 ╰─────────────────➢
 ┌─☛『 *_reaction_* 』☚
 ┃❏*bully @tag
@@ -336,7 +301,6 @@ let str = `
 ┃❏*crypto
 ┃❏*currency
 ┃❏*countdown
-┃❏*prayertime
 ┃❏*convert
 ╰─────────────────➢
 ┌─☛『 *_main_* 』☚
@@ -360,13 +324,6 @@ let str = `
 ┃❏*funmenu
 ┃❏*gamemenu
 ┃❏*stickermenu
-┃❏*nsfwmenu
-┃❏*logomenu
-┃❏*toolmenu
-┃❏*animemenu2
-┃❏*animemenu
-┃❏*listprem
-┃❏*logomenu2
 ┃❏*ping
 ┃❏*ping2
 ┃❏*runtime
@@ -382,18 +339,8 @@ let str = `
 ┃❏*listcmd
 ┃❏*setcmd <txt>
 ╰─────────────────➢
-┌─☛『 *_information_* 』☚
-┃❏*cninfo
-┃❏*fact
-╰─────────────────➢
 ┌─☛『 *_finance_* 』☚
 ┃❏*crypto
-╰─────────────────➢
-┌─☛『 *_cryptocurrency_* 』☚
-┃❏*crypto
-╰─────────────────➢
-┌─☛『 *_time_* 』☚
-┃❏*countdown
 ╰─────────────────➢
 ┌─☛『 *_downloader_* 』☚
 ┃❏*facebook <url>
@@ -415,8 +362,6 @@ let str = `
 ┃❏*ytsearch
 ┃❏*ytmp4 <yt-link>
 ┃❏*wallpaper <query>
-┃❏*play  Ⓛ
-┃❏*play  Ⓛ
 ╰─────────────────➢
 ┌─☛『 *_premium_* 』☚
 ┃❏*gdrive 🅟
@@ -465,36 +410,6 @@ let str = `
 ┃❏*google <search>
 ┃❏*s <search>
 ╰─────────────────➢
-┌─☛『 *_maker_* 』☚
-┃❏*blur
-┃❏*difuminar2
-┃❏*hornycard
-┃❏*hornylicense
-┃❏*gfx1
-┃❏*gfx2
-┃❏*gfx3
-┃❏*gfx4
-┃❏*gfx5
-┃❏*gfx6
-┃❏*gfx7
-┃❏*gfx8
-┃❏*gfx9
-┃❏*gfx10
-┃❏*gfx11
-┃❏*gfx12
-┃❏*simpcard
-┃❏*itssostupid
-┃❏*iss
-┃❏*stupid
-┃❏*tweet <comment>
-┃❏*lolicon
-┃❏*quozio
-┃❏*qmkr
-┃❏*ytcomment <comment>
-╰─────────────────➢
-┌─☛『 *_nsfw_* 』☚
-┃❏*nsfw
-╰─────────────────❖
 ┌─☛『 *_advanced_* 』☚
 ┃❏$
 ╰─────────────────➢
@@ -506,27 +421,6 @@ let str = `
 ┃❏*reg <name.age>
 ┃❏*mysn
 ┃❏*unreg <Num Serie>
-╰─────────────────➢
-┌─☛『 *_sticker_* 』☚
-┃❏*emojimix <emoji+emoji>
-┃❏*getsticker
-┃❏*smaker
-┃❏*stickerwithmeme (caption|reply media)
-┃❏*swmeme <url>
-┃❏*swm(caption|reply media)
-┃❏*sfull
-┃❏*toimg <sticker>
-┃❏*tovid
-┃❏*trigger <@user>
-┃❏*ttp
-┃❏*ttp2
-┃❏*ttp3
-┃❏*ttp4
-┃❏*ttp5
-┃❏*attp
-┃❏*attp2
-┃❏*attp3
-┃❏*take <name>|<author>
 ╰─────────────────➢
 ┌─↘☛『 *_audio_* 』☚
 ┃❏*bass [vn]
@@ -543,7 +437,7 @@ let str = `
 ┃❏*tupai [vn]
 ╰─────────────────➢
 ┌─☛『 *_news_* 』☚
-┃❏*news
+┃❏*ndtv
 ┃❏*technews
 ╰─────────────────➢
 ┌─➢『 *_conversion_* 』❖
@@ -556,8 +450,8 @@ let str = `
     m.react(done)
 
 }
-handler.help = ['imenu']
-handler.tags = ['group']
+handler.help = ['menui']
+handler.tags = ['main']
 handler.command = ['menu1', 'imenu', 'menui'] 
 
 export default handler

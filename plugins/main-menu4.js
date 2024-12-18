@@ -65,8 +65,7 @@ import {
   ◈ .reset <54xxx>
   ◈ .resetprefix
   ◈ .restart
-  ◈ ..setprefix
-  ◈ ..setprefix [symbol]
+  ◈ .setprefix [symbol]
   ◈ .unban @user
   ◈ .unbanchat
   ◈ .update
@@ -136,7 +135,6 @@ import {
   ◈ .instagram
   ◈ .mediafire <url>
   ◈ .mega
-  ◈ .modapk
   ◈ .play <query>
   ◈ .play2 <text>
   ◈ .playvid <text>
@@ -163,24 +161,12 @@ import {
   ◈ .ppt <rock/paper/scissors>
   ◈ .tictactoe <tag number>
   ╰──────────⳹`
-  let logomenu = `
+  let stickermenu = `
   ✦ ───『 *maker* 』─── ⚝
   ◈ .blur
   ◈ .difuminar2
   ◈ .hornycard
   ◈ .hornylicense
-  ◈ .gfx1
-  ◈ .gfx2
-  ◈ .gfx3
-  ◈ .gfx4
-  ◈ .gfx5
-  ◈ .gfx6
-  ◈ .gfx7
-  ◈ .gfx8
-  ◈ .gfx9
-  ◈ .gfx10
-  ◈ .gfx11
-  ◈ .gfx12
   ◈ .simpcard
   ◈ .itssostupid
   ◈ .iss
@@ -188,29 +174,6 @@ import {
   ◈ .tweet <comment>
   ◈ .lolicon
   ◈ .ytcomment <comment>
-  ╰──────────⳹`
-  
-  let stickermenu = `
-  ✦ ───『 *sticker* 』─── ⚝
-  ◈ .emojimix <emoji+emoji>
-  ◈ .getsticker
-  ◈ .smaker
-  ◈ .stickerwithmeme (caption|reply media)
-  ◈ .swmeme <url>
-  ◈ .swm(caption|reply media)
-  ◈ .sfull
-  ◈ .toimg <sticker>
-  ◈ .tovid
-  ◈ .trigger <@user>
-  ◈ .ttp
-  ◈ .ttp2
-  ◈ .ttp3
-  ◈ .ttp4
-  ◈ .ttp5
-  ◈ .attp
-  ◈ .attp2
-  ◈ .attp3
-  ◈ .take <name>|<author>
   ╰──────────⳹`
   
   let audiomenu = `
@@ -232,7 +195,6 @@ import {
   
   let newsmenu = `
   ✦ ───『 *news* 』─── ⚝
-  ◈ .news
   ◈ .technews
   ◈ .ndtv
   ╰──────────⳹
@@ -301,93 +263,8 @@ import {
   ◈ .zerotwo
   ◈ .loli
   ◈ .pokedex <pokemon>
-  ◈ .trace
   ╰──────────⳹
   `
-  let nsfwmenu = `
-  ✦ ───『 *nsfw* 』─── ⚝
-  ◈ .genshin
-  ◈ .swimsuit
-  ◈ .schoolswimsuit
-  ◈ .white
-  ◈ .barefoot
-  ◈ .touhou
-  ◈ .gamecg
-  ◈ .hololive
-  ◈ .uncensored
-  ◈ .sunglasses
-  ◈ .glasses
-  ◈ .weapon
-  ◈ .shirtlift
-  ◈ .chain
-  ◈ .fingering
-  ◈ .flatchest
-  ◈ .torncloth
-  ◈ .bondage
-  ◈ .demon
-  ◈ .wet
-  ◈ .pantypull
-  ◈ .headdress
-  ◈ .headphone
-  ◈ .tie
-  ◈ .anusview
-  ◈ .shorts
-  ◈ .stokings
-  ◈ .topless
-  ◈ .beach
-  ◈ .bunnygirl
-  ◈ .bunnyear
-  ◈ .idol
-  ◈ .vampire
-  ◈ .gun
-  ◈ .maid
-  ◈ .bra
-  ◈ .nobra
-  ◈ .bikini
-  ◈ .whitehair
-  ◈ .blonde
-  ◈ .pinkhair
-  ◈ .bed
-  ◈ .ponytail
-  ◈ .nude
-  ◈ .dress
-  ◈ .underwear
-  ◈ .foxgirl
-  ◈ .uniform
-  ◈ .skirt
-  ◈ .sex
-  ◈ .sex2
-  ◈ .sex3
-  ◈ .breast
-  ◈ .twintail
-  ◈ .spreadpussy
-  ◈ .tears
-  ◈ .seethrough
-  ◈ .breasthold
-  ◈ .drunk
-  ◈ .fateseries
-  ◈ .spreadlegs
-  ◈ .openshirt
-  ◈ .headband
-  ◈ .food
-  ◈ .close
-  ◈ .tree
-  ◈ .nipples
-  ◈ .erectnipples
-  ◈ .horns
-  ◈ .greenhair
-  ◈ .wolfgirl
-  ◈ .catgirl
-  ◈ .nsfw
-  ◈ .ass
-  ◈ .boobs
-  ◈ .lesbian
-  ◈ .pussy
-  ◈ .pack
-  ◈ .xvid
-  ◈ .xnxx
-  ╰──────────⳹`
-  
   let toolsmenu = `
   ✦ ───『 *tools* 』─── ⚝
   ◈ .nowa
@@ -405,27 +282,21 @@ import {
   ◈ .shazam
   ◈ .cal <equation>
   ◈ .carbon <code>
-  ◈ .define <word>
   ◈ .element
   ◈ .google
   ◈ .itunes
   ◈ .lyrics
   ◈ .imdb
-  ◈ .course
-  ◈ .randomcourse
   ◈ .readmore <text1>|<text2>
   ◈ .readvo
   ◈ .removebg
   ◈ .ss <url>
   ◈ .ssf <url>
-  ◈ .subreddit
-  ◈ .telesticker  Ⓛ
   ◈ .tourl
   ◈ .translate <lang> <text>
   ◈ .true
   ◈ .tts <lang> <task>
   ◈ .wa
-  ◈ .wikipedia
   ╰──────────⳹`
   
   let Aimenu = `
@@ -434,7 +305,8 @@ import {
   ◈ .dalle
   ◈ .chatgpt
   ◈ .toanime
-  ◈ .gitagpt
+  ◈ .gpt
+  ◈ .gpt4
   ◈ .tocartoon
   ◈ .ai
   ◈ .bard
