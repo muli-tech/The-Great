@@ -37,6 +37,10 @@ import yargs from 'yargs'
 import CloudDBAdapter from './lib/cloudDBAdapter.js'
 import { MongoDB } from './lib/mongoDB.js'
 import { makeWASocket, protoType, serialize } from './lib/simple.js'
+//import { createRequire } from 'module';
+const require = createRequire(import.meta.url);
+const cheerio = require('cheerio');
+
 
 const {
   DisconnectReason,
