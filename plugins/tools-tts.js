@@ -24,9 +24,9 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
     if (res) conn.sendFile(m.chat, res, 'tts.opus', null, m, true)
   }
 }
-handler.help = ['tts <lang> <task>']
+handler.help = ['tts <task>']
 handler.tags = ['tools']
-handler.command = ['tts', 'voz'] 
+handler.command = ['tts', 'note'] 
 
 export default handler
 

@@ -6,7 +6,7 @@ let handler = async (m, { conn, args }) => {
     dog: text || 'i\'m+stupid'
     }), 'error.png', `*@${author}*`, m)
     }  
-    handler.help = ['itssostupid', 'iss', 'stupid']
+    handler.help = ['stupid']
     handler.tags = ['maker']
     handler.command = /^(itssostupid|iss|stupid)$/i
     export default handler

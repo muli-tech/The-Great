@@ -103,7 +103,7 @@ async function gandu() {
       process.exit(1)
     } else {
       console.log(`${endi}`)
-      console.log(chalk.bgBlack(chalk.redBright('initializing Guru Bot')))
+      console.log(chalk.bgBlack(chalk.redBright('initializing ...')))
     }
   } catch (error) {
     console.error('Error:', error)
@@ -379,11 +379,11 @@ async function connectionUpdate(update) {
   if (connection === 'open') {
     const { jid, name } = conn.user
 
- const msg = `Hi🤩${name} Congrats you have successfully deployed ‖⫷※•şɐɱʉ•※⫸‖ - BOT\nJoin my support Channel for any Query\n https://whatsapp.com/channel`
+ const msg = `Hi🤩${name} Congrats you have successfully deployed ‖⫷※•şɐɱʉ•※⫸‖  BOT\nJoin my support group for any Query\n https://chat.whatsapp.com/FV96nX6l7iCGmBeunOFPa0`
 
     await conn.sendMessage(jid, { text: msg, mentions: [jid] }, { quoted: null })
     
-    conn.logger.info(chalk.greenBright('\n🚩 R E A D Y'))
+    conn.logger.info(chalk.greenBright('\n🟢 R E A D Y'))
   }
 
   if (connection == 'close') {

@@ -16,6 +16,6 @@ handler.help = ['buych']
 handler.tags = ['economy']
 handler.command = ['buy-chicken', 'buych'] 
 
-handler.group = true
+//handler.group = true
 
 export default handler

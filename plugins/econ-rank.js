@@ -6,7 +6,7 @@ let handler = async (m, { conn }) => {
 
   if (!(who in global.db.data.users)) throw `✳️ The user is not found in my database`;
 
-  let pp = await conn.profilePictureUrl(who, 'image').catch(_ => './XLICON.jpg');
+  let pp = await conn.profilePictureUrl(who, 'image').catch(_ => './samu1.jpg');
   let user = global.db.data.users[who];
   let { exp, level, role } = global.db.data.users[who];
   let { min, xp } = xpRange(user.level, global.multiplier);

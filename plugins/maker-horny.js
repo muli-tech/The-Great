@@ -4,7 +4,7 @@ let handler = async (m, { conn }) => {
     avatar: await conn.profilePictureUrl(who, 'image').catch(_ => 'https://telegra.ph/file/24fa902ead26340f3df2c.png'),
     }), 'hornycard.png', '*so horny 🥵🔥*', m)
     }
-    handler.help = ['hornycard', 'hornylicense']
+    handler.help = ['hornycard']
     handler.tags = ['maker'] 
     handler.command = /^(hornycard|license)$/i 
     export default handler

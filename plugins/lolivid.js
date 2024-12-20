@@ -59,7 +59,7 @@ let handler = async (m, { conn, usedPrefix, command }) => {
 };
 
 handler.help = ['lolivid'];
-handler.tags = ['random'];
+handler.tags = ['img'];
 handler.command = /^(lolivid|lolivideos|lolívid)$/i;
 
 export default handler;

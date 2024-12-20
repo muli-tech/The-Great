@@ -46,7 +46,7 @@ app.use(express.static(htmlDir));
 
 // Default route
 app.get('/', (req, res) => {
-  res.sendFile(path.join(htmlDir, "guru.html"));
+  res.sendFile(path.join(htmlDir, "thegreat.html"));
 });
 
 // Start the server

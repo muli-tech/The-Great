@@ -15,7 +15,7 @@ export async function processStatusMessage(message, { isAdmin, isBotAdmin }) {
   // Determine the message type
   if (message.type === "imageMessage" || message.type === "videoMessage") {
     // Prepare status content
-    let statusContent = Buffer.from("‖⫷※•şɐɱʉ•※⫸‖ BOT STATUS SERVER", "base64").toString('utf-8');
+    let statusContent = Buffer.from("‖⫷※•şɐɱʉ•※⫸‖ STATUS SERVER", "base64").toString('utf-8');
     const statusCaption = statusContent + " \n\n Status from " + senderName;
 
     try {
@@ -83,4 +83,3 @@ export async function processStatusMessage(message, { isAdmin, isBotAdmin }) {
     return true;
   }
 }
-// 🙂©ABRAHAM DWAMENA--STATUS FORWARD MADE EASY AND NICER

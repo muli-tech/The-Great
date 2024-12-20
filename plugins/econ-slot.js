@@ -72,7 +72,7 @@ handler.help = ['slot <amount>']
 handler.tags = ['game']
 handler.command = ['slot']
 
-handler.group = true
+//handler.group = true
 
 export default handler
 

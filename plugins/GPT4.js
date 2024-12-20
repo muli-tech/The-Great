@@ -15,6 +15,7 @@ let handler = async (m, { conn, text, args, usedPrefix, command }) => {
 
     const result = await fetch(apiurl);
     const response = await result.json();
+    m.reply(response)
     console.log(response)
     const textt = response.result.reply;
     await typewriterEffect(conn,m, m.chat , textt);

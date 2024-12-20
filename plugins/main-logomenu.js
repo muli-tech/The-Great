@@ -67,9 +67,9 @@ let str = ` *☑️ ‖⫷※•şɐɱʉ•※⫸‖ ☑️*
     m.react(done)
 
 }
-handler.help = ['main']
+handler.help = ['logo']
 handler.tags = ['group']
-handler.command = ['logo1', 'logos','ab logo','logi'] 
+handler.command = ['logo1', 'logos','ab logo','logo'] 
 
 export default handler
 function clockString(ms) {

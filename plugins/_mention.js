@@ -1,4 +1,4 @@
-/* let handler = m => m
+let handler = m => m
 handler.all = async function (m, conn) {
     var vn = "./Assets/ALIVE.mp3"
     let url = "https://github.com/Samuel-Muli"
@@ -40,4 +40,4 @@ handler.all = async function (m, conn) {
         return
       }
 }
-export default handler */
+export default handler

@@ -205,11 +205,17 @@ case 'autobio':
       }
       global.opts['gconly'] = isEnable
       break
-      
+    case 'autoread':
+    case 'readm':
+      if (!(isAdmin || isOwner)) {
+        global.dfail('admin', m, conn)
+        throw false
+      }
+    chat.autoread = isEnable
+    break
     default:
      if (!/[01]/.test(command)) return m.reply(`
 ≡ List of options
-
 ©──『 *ADMIN*』───©
 ☑️ *Below are the CMD you can enable*
 NB: _YOU ENABLE IT BY TYPING :EXAMPLE_= #on welcome etc
@@ -217,7 +223,7 @@ NB: _YOU ENABLE IT BY TYPING :EXAMPLE_= #on welcome etc
 _________________________
 🔰 *antilink* :_For automatic kicking of members who send gc links_ 
 _________________________
-🔰 *hidden*:_only XLicon teams can use_📡
+🔰 *hidden*:_only my fav can use_📡
 _________________________
 🔰  *autosticker* :_Automatically sends stickers if you send picture in gc_
 _________________________
@@ -233,6 +239,7 @@ _________________________
 ╰──────────────────────────────────────────────⳹ 
 ◈──『 *USERS*』───⳹
 🔰 *autolevelup* : _Automatically levels up exp on user_
+_________________________
 🔰 *chatbot* : _Turns on the chat bot to be able to chat with the bot_
 ╰──────────────────────────────────────────────⳹
 ◈──『 *OWNER*』───⳹
@@ -244,7 +251,9 @@ _________________________
 _________________________
 🔰 *autobio* : _enables  automatic bio of the bot also you will see that bot is running through this_
 _________________________
-__‖⫷※•şɐɱʉ•※⫸‖_____BOT
+🔰 *autoread* : _Go and have fun with the blueticks_
+_________________________
+__‖⫷※•şɐɱʉ•※⫸‖_____
 ╰──────────────────────────────────────────────©
 *📌 Example :*
 *${usedPrefix}on* welcome
