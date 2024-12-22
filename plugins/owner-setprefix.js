@@ -12,7 +12,7 @@ let handler = async(m, { conn, text }) => {
   global.prefix = new RegExp('^[' + text.replace(/[|\\{}()[\]^$+*?.\-\^]/g, '\\$&') + ']')
   await m.reply(`the prefix has been changed to *${text}*`)
 }
-handler.help = ['.setprefix ', '.setprefix [symbol]']
+handler.help = ['setprefix [symbol]']
 handler.tags = ['owner']
 handler.command = /^(setprefix)$/i
 handler.rowner = true

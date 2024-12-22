@@ -1,9 +1,9 @@
 import fetch from 'node-fetch';
 
-let handler = async (message, { args }) => {
+let handler = async (m, { args }) => {
   // Extract the query from the user's input
   if (!args || args.length === 0) {
-    return message.reply("Please provide a search query for images.");
+    return m.reply("Please provide a search query for images.");
   }
 
   const query = args.join(" ");
@@ -16,12 +16,12 @@ let handler = async (message, { args }) => {
     const result = await response.json();
 
     if (!response.ok || result.error) {
-      return message.reply("Failed to fetch image search results. Please try again later.");
+      return m.reply("Failed to fetch image search results. Please try again later.");
     }
 
     // Check if results were found
     if (!result.data || result.data.length === 0) {
-      return message.reply("No images found for the given query.");
+      return m.reply("No images found for the given query.");
     }
 
     // Format the response for the user
@@ -29,11 +29,11 @@ let handler = async (message, { args }) => {
     const replyMessage = `🔍 *Image Search Result for:* "${query}"\n\n![Image](${firstImage.url})\n\n*Title:* ${firstImage.title}`;
 
     // Send the reply to the user with the image
-    await message.reply(replyMessage);
+    await m.reply(replyMessage);
 
   } catch (error) {
     console.error("Error fetching image search results:", error);
-    message.reply("An error occurred while fetching the image results. Please try again later.");
+    m.reply("An error occurred while fetching the image results. Please try again later.");
   }
 };
 

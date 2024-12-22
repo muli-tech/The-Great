@@ -59,7 +59,7 @@ let infobt = `
 │ ➫ *YouTube :* youtube.com/ 
 │ ➫ *GitHub  :* github.com/
 │ ➫ *IG ID   :* instagram.com/
-│ ➫ *Channel* :https://whatsapp.com/channel/
+│ ➫ *Channel* :https://chat.whatsapp.com/FV96nX6l7iCGmBeunOFPa0
 │ ➫ *Status  :* _Having a Date_
 © ‖⫷※•şɐɱʉ•※⫸‖
 

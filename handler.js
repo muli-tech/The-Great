@@ -428,15 +428,15 @@ export async function handler(chatUpdate) {
                 ([number, _, isDeveloper]) => isDeveloper && number
               )) {
                 let data = (await this.onWhatsApp(jid))[0] || {};
-                if (data.exists) {
+                /* if (data.exists) {
                   await m.reply(
                     `*🗂️ Plugin:* ${m.plugin}\n*👤 Sender:* ${m.sender}\n*💬 Chat:* ${m.chat}\n*💻 Command:* ${usedPrefix}${command} ${args.join(' ')}\n📄 *Error Logs:*\n\n${text}`.trim(),
                     data.jid
                   );
-                }
+                } */
               }
             } catch (err) {
-              console.error(chalk.yellow("⚠️ Failed to notify developer"), err);
+              //console.error(chalk.yellow("⚠️ Failed to notify developer"), err);
             }
           }
         
@@ -576,7 +576,7 @@ export async function participantsUpdate({ id, participants, action }) {
                     title: 'THE ‖⫷※•şɐɱʉ•※⫸‖-BOT',
                     body: 'welcome to Group',
                     thumbnailUrl: welcomeApiUrl,
-                    sourceUrl: 'https://whatsapp.com/channel/',
+                    sourceUrl: 'https://chat.whatsapp.com/FV96nX6l7iCGmBeunOFPa0',
                     mediaType: 1,
                     renderLargerThumbnail: true,
                   },
@@ -633,7 +633,7 @@ export async function participantsUpdate({ id, participants, action }) {
                     title: 'THE ‖⫷※•şɐɱʉ•※⫸‖ BOT',
                     body: 'Goodbye from  Group',
                     thumbnailUrl: leaveApiUrl,
-                    sourceUrl: 'https://whatsapp.com/channel/',
+                    sourceUrl: 'https://chat.whatsapp.com/FV96nX6l7iCGmBeunOFPa0',
                     mediaType: 1,
                     renderLargerThumbnail: true,
                   },
@@ -858,7 +858,7 @@ export async function presenceUpdate(presenceUpdate) {
 dfail
  */
 global.dfail = (type, m, conn) => {
-  const userTag = `👋 Hai *@${m.sender.split('@')[0]}*, `
+  const userTag = `👋 Hi *@${m.sender.split('@')[0]}*, `
   const emoji = {
     general: '⚙️',
     owner: '👑',

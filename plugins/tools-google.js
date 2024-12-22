@@ -1,9 +1,9 @@
 import fetch from 'node-fetch';
 
-let handler = async (message, { args }) => {
+let handler = async (m, { args }) => {
   // Extract the query from the user's input
   if (!args || args.length === 0) {
-    return message.reply("Please provide a query to search for.");
+    return m.reply("Please provide a query to search for.");
   }
 
   const query = args.join(" ");
@@ -16,12 +16,12 @@ let handler = async (message, { args }) => {
     const result = await response.json();
 
     if (!response.ok || result.error) {
-      return message.reply("Failed to fetch search results. Please try again later.");
+      return m.reply("Failed to fetch search results. Please try again later.");
     }
 
     // Check if results were found
     if (!result.data || result.data.length === 0) {
-      return message.reply("No results found for the given query.");
+      return m.reply("No results found for the given query.");
     }
 
     // Format the response for the user
@@ -29,11 +29,11 @@ let handler = async (message, { args }) => {
     const replyMessage = `🔍 *Search Result for:* "${query}"\n\nTitle: *${firstResult.title}*\nURL: ${firstResult.url}`;
 
     // Send the reply to the user
-    await message.reply(replyMessage);
+    await m.reply(replyMessage);
 
   } catch (error) {
     console.error("Error fetching search results:", error);
-    message.reply("An error occurred while fetching the results. Please try again later.");
+    m.reply("An error occurred while fetching the results. Please try again later.");
   }
 };
 

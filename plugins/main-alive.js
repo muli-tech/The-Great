@@ -24,7 +24,7 @@ let handler = async(m, { conn, text, usedPrefix, command }) => {
           title: "THE ‖⫷※•şɐɱʉ•※⫸‖ IS ALIVE 🌟",
           body: "‖⫷※•şɐɱʉ•※⫸‖ BOT",
           thumbnailUrl: img,
-          sourceUrl: 'https://chat.whatsapp.com',
+          sourceUrl: 'https://chat.whatsapp.com/FV96nX6l7iCGmBeunOFPa0',
           mediaType: 1,
           renderLargerThumbnail: true
           }}

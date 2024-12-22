@@ -92,4 +92,4 @@ handler.tags = ['main'];
 handler.help = ['autoai'].map(cmd => `${cmd} enable/disable`);
 handler.limit = true;
 
-module.exports = handler;
+export default handler;

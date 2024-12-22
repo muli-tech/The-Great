@@ -50,7 +50,7 @@ handler.help = ['cock-fight <amount>']
 handler.tags = ['economy']
 handler.command = ['cock-fight', 'cf']
 
-handler.group = true
+//handler.group = true
 
 export default handler  
 

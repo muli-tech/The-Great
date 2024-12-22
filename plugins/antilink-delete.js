@@ -1,31 +1,36 @@
-let antilinkdel = false;
+let handler = async (m, { conn, isAdmin, isBotAdmin, command }) => {
+  if (!m.isGroup) return; 
+  if (!isAdmin) return m.reply('You must be an admin to use this command.');
+  if (!isBotAdmin) return m.reply('I must be an admin to enable this feature.');
 
-let handler = async (m, { conn, usedPrefix, command }) => {
-  if (command === 'on antilinkdel') {
-    antilinkdel = true;
-    m.reply('Antilinkdel feature enabled!');
-  } else if (command === 'off antilinkdel') {
-    antilinkdel = false;
-    m.reply('Antilinkdel feature disabled!');
-  } else if (command === 'antilinkdel' && antilinkdel) {
-    m.messages.forEach(async (message) => {
-      if (message.text && message.text.match(/\bhttps?:\/\/|www\./i)) {
-        conn.sendMessage(m.chat, {
-          delete: { 
-            remoteJid: m.chat, 
-            fromMe: false, 
-            id: message.id,  
-            participant: message.participant
-          }
-        });
-      }
-    });
+  let chat = global.db.data.chats[m.chat];
+  if (!chat) chat = global.db.data.chats[m.chat] = {};
+
+  let switchs = /on/i.test(command);
+  chat.antilink = switchs;
+  m.reply(`Anti-link deletion has been *${switchs ? 'enabled' : 'disabled'}*`);
+};
+
+handler.before = async (m, { conn, isAdmin, isBotAdmin }) => {
+  if (!m.isGroup) return;
+  if (isAdmin || !isBotAdmin) return;
+
+  let chat = global.db.data.chats[m.chat];
+  if (!chat || !chat.antilink) return;
+
+  const linkPattern = /https?:\/\/|www\./i;
+  if (linkPattern.test(m.text)) {
+      await conn.sendMessage(m.chat, {
+          text: `_Links are not allowed_`,
+          mentions: [m.sender],
+      });
+      await conn.sendMessage(m.chat, { delete: m.key });
   }
 };
 
-handler.help = ['antilink del'];
+handler.help = ['antilinkdel'];
 handler.tags = ['group'];
-handler.command = /^(on|off)?\s*antilinkdel$/i;
+handler.command = /^antilinkdel(on|off)?$/i;
 handler.group = true;
 handler.admin = true;
 handler.botAdmin = true;
