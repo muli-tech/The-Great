@@ -10,7 +10,7 @@ let handler = async (m, { args }) => {
   const apiKey = "gifted";
   const endpoint = `https://api.giftedtech.my.id/api/search/googleimage?apikey=${apiKey}&query=${encodeURIComponent(query)}`;
 
-  try {
+  //try {
     // Send a GET request to the API
     const response = await fetch(endpoint);
     const result = await response.json();
@@ -31,11 +31,11 @@ let handler = async (m, { args }) => {
     // Send the reply to the user with the image
     await m.reply(replyMessage);
 
-  } catch (error) {
+  } /* catch (error) {
     console.error("Error fetching image search results:", error);
     m.reply("An error occurred while fetching the image results. Please try again later.");
   }
-};
+}; */
 
 // Command metadata
 handler.help = ["img"];

@@ -25,8 +25,8 @@ let handler = async (m, { conn, text, args, usedPrefix, command }) => {
     m.reply('Oops! Something went wrong. , we are trying had to fix it asap');
   }
 }
-handler.help = ['gemini <text>']
-handler.tags = ['tools']
+handler.help = ['gpt4 <text>']
+handler.tags = ['AI']
 handler.command = /^(gpt4)$/i
 
 export default handler

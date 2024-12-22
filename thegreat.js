@@ -37,6 +37,10 @@ import yargs from 'yargs'
 import CloudDBAdapter from './lib/cloudDBAdapter.js'
 import { MongoDB } from './lib/mongoDB.js'
 import { makeWASocket, protoType, serialize } from './lib/simple.js'
+//import { createRequire } from 'module';
+//const require = createRequire(import.meta.url);
+//const cheerio = require('cheerio');
+
 
 const {
   DisconnectReason,
@@ -77,40 +81,59 @@ main()
 
 await delay(1000 * 10)
 
-async function gandu() {
+// Async function to perform some validation logic
+async function koala() {
   try {
-    const packageJson = readFileSync('package.json', 'utf8')
-    const packageData = JSON.parse(packageJson)
-    const gnome = packageData.author && packageData.author.name
+    // Read the 'package.json' file from the current directory
+    const packageJson = readFileSync('package.json', 'utf8');
+    
+    // Parse the JSON content into a JavaScript object
+    const packageData = JSON.parse(packageJson);
+    
+    // Extract the author's name from the 'author' field (if it exists)
+    const gnome = packageData.author && packageData.author.name;
 
+    // If there is no 'author' field or 'name', exit the program
     if (!gnome) {
-      console.log('LOl')
-      process.exit(1)
+      console.log('LOl'); // Logs a meaningless message (placeholder?)
+      process.exit(1); // Exit the process with an error code
     }
 
-    const lund = Buffer.from('Z3VydQ==', 'base64').toString()
-    const lawde = Buffer.from(
-      `Q2hlYXAgQ29weSBPZiBHdXJ1IEJvdCBGb3VuZCAsIFBsZWFzZSBVc2UgdGhlIE9yaWdpbmFsIEd1cnUgQm90IEZyb20gaHR0cHM6Ly9naXRodWIuY29tL0d1cnUzMjIvR1VSVS1CT1QK`,
-      'base64'
-    ).toString()
-    const endi = Buffer.from(
-      `U2VjdXJpdHkgY2hlY2sgcGFzc2VkLCBUaGFua3MgRm9yIHVzaW5nIEd1cnUgTXVsdGlEZXZpY2U=`,
-      'base64'
-    ).toString()
+    // Decoding Base64 strings for further use
+    const lund = Buffer.from('c2FtdQ==', 'base64').toString(); 
+    // Decoded value: 'samu'
 
+    const lawde = Buffer.from(
+      `QW0gcmVhbGx5IHNvcnJ5IGJ1dCBJIGNhbiBub3QgcnVuIGZvciB1bmtub3duIHJlYXNvbnMuIFJlZmVyIHRvIGh0dHBzOi8vZ2l0aHViLmNvbS9tdWxpLXRlY2gvVGhlLUdyZWF0`,
+      'base64'
+    ).toString();
+    // Decoded value: 'Am really sorry but I can not run for unknown reasons. Refer to https://github.com/muli-tech/The-Great'
+
+    const endi = Buffer.from(
+      `QWxsIGdvb2QgbGV0cyBkaXZlIGludG8gVGVjaCBXb3JsZA==`,
+      'base64'
+    ).toString();
+    // Decoded value: 'All good lets dive into Tech World'
+
+    // Compare the 'author' name from package.json with the decoded 'lund' value
     if (gnome && gnome.trim().toLowerCase() !== lund.toLowerCase()) {
-      console.log(lawde)
-      process.exit(1)
+      // If the names don't match, display a warning message and exit
+      console.log(chalk.bgBlack(chalk.redBright(lawde))); // Logs the decoded 'lawde' message
+      process.exit(1); // Exit with an error code
     } else {
-      console.log(`${endi}`)
-      console.log(chalk.bgBlack(chalk.redBright('initializing ...')))
+      // If the names match, log a success message and proceed
+      console.log(chalk.bgBlack(chalk.greenBright(`${endi}`))); // Logs the decoded 'endi' message
+      console.log(chalk.bgBlack(chalk.blueBright('initializing ...'))); // Stylized log for initialization
     }
   } catch (error) {
-    console.error('Error:', error)
+    // Catch and display any errors during execution
+    console.error('Error:', error);
   }
 }
 
-gandu()
+// Call the `koala` function to execute the logic
+koala();
+
 
 const pairingCode = !!global.pairingNumber || process.argv.includes('--pairing-code')
 const useQr = process.argv.includes('--qr')

@@ -9,4 +9,6 @@ let docname = text ? text : m.pushName || 'Gurubot'
 conn.sendFile(m.chat, `http://api.lolhuman.xyz/api/convert/imgtopdf?apikey=${lolkeysapi}&img=${url}`, docname + '.pdf', '', m, false, { asDocument: true })
 }
 handler.command = /^topdf$/i
+handler.tags = ['tools'];
+handler.help = ['topdf'];
 export default handler

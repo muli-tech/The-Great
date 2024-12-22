@@ -4,7 +4,7 @@ let handler = async (m) => {
   await m.react('⏳');
   try {
     // Fetch random flirt line from the API
-    let response = await fetch(`https://api.giftedtech.my.id/api/fun/truth?apikey=gifted`);
+    let response = await fetch(`https://api.giftedtech.my.id/api/fun/christmas?apikey=gifted`);
     
     if (!response.ok) {
       throw `❌ Failed to fetch flirt message. API response: ${response.status} - ${response.statusText}`;
@@ -25,7 +25,7 @@ let handler = async (m) => {
     await conn.sendMessage(
       m.chat,
       {
-        text: `💌 *Time to say the truth:*\n\n_${flirtMessage}_`,
+        text: `💌 *And this boy child...:*\n\n_${flirtMessage}_`,
       },
       { quoted: m }
     );
@@ -35,8 +35,8 @@ let handler = async (m) => {
   }
 };
 
-handler.help = ['truth'];
+handler.help = ['chistmas'];
 handler.tags = ['fun'];
-handler.command = /^(truth)$/i;
+handler.command = /^(christmas|sherehe|party)$/i;
 
 export default handler;

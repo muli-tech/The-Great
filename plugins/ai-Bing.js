@@ -14,7 +14,9 @@ let handler = async (m, { conn, text, args, usedPrefix, command }) => {
     if (!response.result) throw 'No result found';
 
     const replyText = response.result;
-    await conn.sendButton(
+    m.reply(replyText)
+    m.react(done)
+    /* await conn.sendButton(
       m.chat, 
       replyText, 
       author, 
@@ -23,7 +25,7 @@ let handler = async (m, { conn, text, args, usedPrefix, command }) => {
       null, 
       [['Fork repo', `https://github.com/muli-tech/The-Great`]], 
       m
-    );
+    ); */
   } catch (error) {
     console.error(error);
     m.reply('Oops! Something went wrong. We are trying hard to fix it ASAP.');
@@ -31,7 +33,7 @@ let handler = async (m, { conn, text, args, usedPrefix, command }) => {
 };
 
 handler.help = ['bing <text>'];
-handler.tags = ['tools'];
+handler.tags = ['AI'];
 handler.command = /^(bing)$/i;
 
 export default handler;

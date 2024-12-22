@@ -3,11 +3,11 @@ import fetch from 'node-fetch';
 let handler = async (m) => {
   await m.react('⏳');
   try {
-    // Fetch random flirt line from the API
-    let response = await fetch(`https://api.giftedtech.my.id/api/fun/truth?apikey=gifted`);
+    // Fetch random advice from the API
+    let response = await fetch(`https://api.giftedtech.my.id/api/fun/advice?apikey=gifted`);
     
     if (!response.ok) {
-      throw `❌ Failed to fetch flirt message. API response: ${response.status} - ${response.statusText}`;
+      throw `❌ Failed to fetch advice. API response: ${response.status} - ${response.statusText}`;
     }
 
     // Parse the JSON response
@@ -17,15 +17,15 @@ let handler = async (m) => {
       throw "❌ Unexpected API response format.";
     }
 
-    // Extract the flirt message
-    let flirtMessage = data.result;
+    // Extract the advice
+    let advice = data.result;
 
-    // Send the flirt message to the chat
+    // Send the advice to the chat
     await m.react('✅');
     await conn.sendMessage(
       m.chat,
       {
-        text: `💌 *Time to say the truth:*\n\n_${flirtMessage}_`,
+        text: `💡 *Here's a piece of advice for you:*\n\n_${advice}_`,
       },
       { quoted: m }
     );
@@ -35,8 +35,8 @@ let handler = async (m) => {
   }
 };
 
-handler.help = ['truth'];
+handler.help = ['advice'];
 handler.tags = ['fun'];
-handler.command = /^(truth)$/i;
+handler.command = /^(advice)$/i;
 
 export default handler;

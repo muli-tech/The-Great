@@ -57,7 +57,7 @@ let infobt = `
 │ ➫ *Age     :* _24_
 │ ➫ *Phone   :* wa.me/254725074352
 │ ➫ *YouTube :* youtube.com/ 
-│ ➫ *GitHub  :* github.com/
+│ ➫ *GitHub  :* https://github.com/muli-tech/The-Great
 │ ➫ *IG ID   :* instagram.com/
 │ ➫ *Channel* :https://chat.whatsapp.com/FV96nX6l7iCGmBeunOFPa0
 │ ➫ *Status  :* _Having a Date_

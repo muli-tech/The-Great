@@ -1,28 +1,42 @@
 import fetch from 'node-fetch';
 
-let pickupLineHandler = async (m, { conn, text }) => {
+let handler = async (m) => {
+  await m.react('⏳');
   try {
-    let res = await fetch(`https://api.popcat.xyz/pickuplines`);
-
-    if (!res.ok) {
-      throw new Error(`API request failed with status ${res.status}`);
+    // Fetch random flirt line from the API
+    let response = await fetch(`https://api.giftedtech.my.id/api/fun/pickupline?apikey=gifted`);
+    
+    if (!response.ok) {
+      throw `❌ Failed to fetch flirt message. API response: ${response.status} - ${response.statusText}`;
     }
 
-    let json = await res.json();
+    // Parse the JSON response
+    let data = await response.json();
 
-    console.log('JSON response:', json);
+    if (!data.success || !data.result) {
+      throw "❌ Unexpected API response format.";
+    }
 
-    let pickupLine = `*Here's a pickup line for you:*\n\n"${json.pickupline}"\n\nContributor: ${json.contributor}`;
+    // Extract the flirt message
+    let flirtMessage = data.result;
 
-    m.reply(pickupLine);
+    // Send the flirt message to the chat
+    await m.react('✅');
+    await conn.sendMessage(
+      m.chat,
+      {
+        text: `💌 *Single by choice or chance?*\n\n_${flirtMessage}_`,
+      },
+      { quoted: m }
+    );
   } catch (error) {
-    console.error(error);
-    // Handle the error appropriately
+    await m.react('❌');
+    throw `An error occurred: ${error}`;
   }
 };
 
-pickupLineHandler.help = ['pickupline'];
-pickupLineHandler.tags = ['fun'];
-pickupLineHandler.command = /^(pickupline|pickup)$/i;
+handler.help = ['pickup'];
+handler.tags = ['fun'];
+handler.command = /^(pickup|pickupline|pu)$/i;
 
-export default pickupLineHandler;
+export default handler;

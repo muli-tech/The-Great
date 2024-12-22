@@ -1,4 +1,4 @@
-
+/* 
 
 let handler = async(m, { conn, text, usedPrefix, command }) => {
 
@@ -39,3 +39,4 @@ let handler = async(m, { conn, text, usedPrefix, command }) => {
     handler.command = /^(alive)$/i 
 
     export default handler;
+ */
