@@ -27,11 +27,13 @@ RUN git clone https://github.com/muli-tech/The-Great
 WORKDIR /The-Great
 
 # Install dependencies (try yarn first, then npm if yarn is not found)
-RUN if command -v yarn &> /dev/null; then \
-    yarn install; \
-    else \
-    npm install; \
-    fi
+#RUN if command -v yarn &> /dev/null; then \
+#  yarn install; \
+#  else \
+#  npm install; \
+#  fi
+
+RUN npm install
 
 # Run the application
 CMD ["node", "index.js"]
