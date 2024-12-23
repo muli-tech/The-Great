@@ -9,7 +9,7 @@ RUN dnf -y update && \
     dnf clean all -y
 
 #unistall nodejs
-RUN dnf remove nodejs
+RUN dnf -y remove nodejs
 
 # Install Node.js 20 from NodeSource
 RUN curl -sL https://rpm.nodesource.com/setup_20.x | bash - && \
