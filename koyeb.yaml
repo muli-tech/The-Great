@@ -9,8 +9,8 @@ RUN dnf -y update && \
     dnf clean all -y
 
 #install yarn just incase
-RUN curl -sL https://dl.yarnpkg.com/rpm/yarn.repo | tee /etc/yum.repos.d/yarn.repo
-RUN dnf install -y yarn
+#RUN curl -sL https://dl.yarnpkg.com/rpm/yarn.repo | tee /etc/yum.repos.d/yarn.repo
+#RUN dnf install -y yarn
 
 #unistall nodejs
 RUN dnf -y remove nodejs
