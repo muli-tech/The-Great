@@ -35,7 +35,7 @@ let handler = async (m) => {
   }
 };
 
-handler.help = ['chistmas'];
+handler.help = ['christmas'];
 handler.tags = ['fun'];
 handler.command = /^(christmas|sherehe|party)$/i;
 

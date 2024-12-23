@@ -1,7 +1,7 @@
 const userLastMessageMap = new Map();
 
 export async function all(m) {
-  const busy = 5 * 60 * 1000;  //if am aout for more than five minutes this will coolyou down
+  const busy = 5 * 60 * 1000;  //if am out for more than five minutes this will cool you down
 
   const currentTime = Date.now();
   const userId = m.sender;
@@ -23,8 +23,11 @@ export async function all(m) {
     'hi',
     'Heey',
     'Sam',
-    'SaMu',
-    'niaje'
+    'Muli',
+    'niaje',
+    'muli',
+    'sam',
+
   ];
 
   if (
@@ -34,7 +37,7 @@ export async function all(m) {
   ) 
   {
 
-    m.reply('*WELCOME am ‖⫷※•şɐɱʉ•※⫸‖ personal assistant*\n\n\nHello 💕🥰 \n I may be offline or I may be slow to respond, but wait I will be back soon 😇\n type */menu* to enjoy some awesome commands as you wait')
+    m.reply('*WELCOME*\n *Am ‖⫷※•şɐɱʉ•※⫸‖ personal assistant*\n\n\nHello 💕🥰 \n SaMu may be away, but He will be back soon 😇\n type */menu* to enjoy some awesome commands as you wait');
     /* this.sendButton(
       m.chat,
       `*WELCOME am ‖⫷※•şɐɱʉ•※⫸‖ personal assistant*      

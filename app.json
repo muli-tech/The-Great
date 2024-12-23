@@ -1,16 +1,16 @@
 {
-  "name": "whatsapp-bot (X-BOT)",
+  "name": "whatsapp-bot",
   "description": " Whatsapp bot.",
   "keywords": [
     "whatsapp bot"
   ],
-  "repository": "https://github.com/salmanytofficial/XLICON-V2-MD/main",
+  "repository": "https://github.com/muli-tech/The-Great",
   "stack": "container",
   "env": {
     "DATABASE_URL": {
       "description": "your mongodb database url",
       "required": false,
-      "value": "mongodb+srv://Samuel:206IJJ9jX2cvk0MW@cluster0.abofg.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+      "value": ""
     },
     "SESSION_ID": {
       "description": "your session id",
@@ -24,7 +24,7 @@
     },
     "PREFIX": {
       "description": "put any one symbol here except @ and + , leave it Blank if you want to use multiple prefix",
-      "required": false,
+      "required": true,
       "value": "/"
     },
      "HKEY": {

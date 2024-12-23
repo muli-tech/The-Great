@@ -65,7 +65,7 @@ let str = ` *☑️‖⫷※•şɐɱʉ•※⫸‖ BOT☑️*
 
 }
 handler.help = ['menu3']
-handler.tags = ['group']
+handler.tags = ['main']
 handler.command = ['menu3', 'help3','h','commands'] 
 
 export default handler

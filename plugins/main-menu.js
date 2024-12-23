@@ -9,9 +9,8 @@ const defaultMenu = {
   before: `
   「 ${botname} 🎁 MD 」
   *%ucpn*
-
 ⍟────────────────⍟
-*_Nikwakya! It's ‖⫷※•şɐɱʉ•※⫸‖ A Multi-Device Whatsapp BOT_*
+*_Nikwakya!\n It's ‖⫷※•şɐɱʉ•※⫸‖ A Multi-Device Whatsapp BOT_*
 *_Recoded By  Samuel Muli_*
 ╭─────────────────⦿
 ┃   🔰〘 𝙄𝙉𝙁𝙊 〙🔰
@@ -198,6 +197,8 @@ let handler = async (m, { conn, usedPrefix: _p, __dirname, args }) => {
 };
 
 handler.command = /^(menu|help|\?)$/i;
+handler.help = ['menu'];
+handler.tags = ['main'];
 
 export default handler;
 

@@ -147,7 +147,7 @@ let handler = async (m, { conn, usedPrefix, command }) => {
 	}
 };
 handler.help = ["tocartoon"];
-handler.tags = ["AI"];
+handler.tags = ["maker"];
 handler.command = ["tocartoon"];
 
 handler.premium = false

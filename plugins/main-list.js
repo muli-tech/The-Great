@@ -19,8 +19,7 @@ lkr = "*Get excited, here are your options:*\n\n" +
 "🎮 *" + usedPrefix + "gamemenu* - Enter the gaming arena. May the odds be ever in your favor!\n\n" +     
 "🎨 *" + usedPrefix + "stickermenu* - A rainbow of stickers for your inner artist. Make your chats pop!\n\n" +    
 "🧰 *" + usedPrefix + "toolmenu* - Your handy-dandy toolkit. What's your pick, genius?\n\n" +    
-"🎩 *" + usedPrefix + "logomenu* - Create a logo that screams YOU. Or whispers. You choose the volume.\n\n" +    
-"🌙 *" + usedPrefix + "nsfwmenu* - The After Dark menu. But remember, sharing adult secrets must be consent-based.";
+"🎩 *" + usedPrefix + "logomenu* - Create a logo that screams YOU. Or whispers. You choose the volume.\n\n" ;
 break;
 
           
@@ -97,6 +96,7 @@ break;
           break;
           case 'downloadermenu':
             case 'dlmenu' :
+              case 'downloadmenu':
           lkr = `
 ╭─────────────────⍟
 ┃ ‖⫷※•şɐɱʉ•※⫸‖ 𝘿𝙇📱 𝙈𝙀𝙉𝙐 
@@ -130,22 +130,11 @@ break;
 
 ┏━━━ʕ•㉨•ʔ━━━┓
 ┃➣👑 _${usedPrefix}claim/daily_
-┃➣👑 _${usedPrefix}weekly_
 ┃➣👑 _${usedPrefix}monthly_
 ┃➣👑 _${usedPrefix}leaderboard_
-┃➣👑 _${usedPrefix}bet_
-┃➣👑 _${usedPrefix}heal_
-┃➣👑 _${usedPrefix}craft_
-┃➣👑 _${usedPrefix}balance_
 ┃➣👑 _${usedPrefix}shop_
-┃➣👑 _${usedPrefix}sell_
-┃➣👑 _${usedPrefix}adventure_
-┃➣👑 _${usedPrefix}opencrate_
-┃➣👑 _${usedPrefix}mine_
 ┃➣👑 _${usedPrefix}work_
 ┃➣👑 _${usedPrefix}transfer_
-┃➣👑 _${usedPrefix}todiamond_
-┃➣👑 _${usedPrefix}tomoney_
 ┗━━━ʕ•㉨•ʔ━━━┛`; // 
           break;
           case 'funmenu':
@@ -160,12 +149,12 @@ break;
 ┃➣👻 _${usedPrefix}dare_
 ┃➣👻 _${usedPrefix}flirt_
 ┃➣👻 _${usedPrefix}gay_
-┃➣👻 _${usedPrefix}shayeri_
-┃➣👻 _${usedPrefix}ship_
+┃➣👻 _${usedPrefix}advice_
+┃➣👻 _${usedPrefix}pickupline_
 ┃➣👻 _${usedPrefix}waste_
 ┃➣👻 _${usedPrefix}simpcard_
 ┃➣👻 _${usedPrefix}hornycard_
-┃➣👻 _${usedPrefix}ytcomment_
+┃➣👻 _${usedPrefix}kanye_
 ┃➣👻 _${usedPrefix}stupid_
 ┃➣👻 _${usedPrefix}lolicon_
 ┗━━━ʕ•㉨•ʔ━━━┛`; // 
@@ -226,12 +215,13 @@ break;
 ┃➣🎮 _${usedPrefix}tictactoe_
 ┃➣🎮 _${usedPrefix}delttt_
 ┃➣🎮 _${usedPrefix}math_
-┃➣🎮 _${usedPrefix}math answer_
+┃➣🎮 _${usedPrefix}roulette_
 ┃➣🎮 _${usedPrefix}ppt_
 ┃➣🎮 _${usedPrefix}slot_
-┃➣🎮 _${usedPrefix}casino_
-┃➣🎮 _${usedPrefix}yourmom_
-┃➣🎮 _${usedPrefix}teri mummy_
+┃➣🎮 _${usedPrefix}guessflag_
+┃➣🎮 _${usedPrefix}cock-fight <amount>_
+┃➣🎮 _${usedPrefix}gamble <amoount> <red|black>_
+┃➣🎮 _${usedPrefix}chess_
 ┗━━━ʕ•㉨•ʔ━━━┛`; // 
           break;
           case 'stickermenu':
@@ -339,19 +329,11 @@ break;
 ┃➣🧰 _${usedPrefix}readqr_
 ┃➣🧰 _${usedPrefix}fancy_
 ┃➣🧰 _${usedPrefix}weather_
-┃➣🧰 _${usedPrefix}siri_
-┃➣🧰 _${usedPrefix}alexa_
 ┃➣🧰 _${usedPrefix}dalle_
 ┃➣🧰 _${usedPrefix}tocartoon_
 ┃➣🧰 _${usedPrefix}quote_
 ┃➣🧰 _${usedPrefix}technews_
 ┃➣🧰 _${usedPrefix}define_
-┃➣🧰 _${usedPrefix}pokedex_
-┃➣🧰 _${usedPrefix}removebg_
-┃➣🧰 _${usedPrefix}apk_
-┃➣🧰 _${usedPrefix}tinyurl/shorturl_
-┃➣🧰 _${usedPrefix}readvo_
-┃➣🧰 _${usedPrefix}true_
 ┗━━━ʕ•㉨•ʔ━━━┛`; // 
           break;
           case 'nsfwmenu':
@@ -370,9 +352,9 @@ break;
       m.react(done);
     };
     
-    handler.help = ['list', 'botmenu', 'ownermenu', 'groupmenu', 'dlmenu', 'downloadermenu', 'economymenu', 'funmenu', 'gamemenu', 'stickermenu', 'nsfwmenu', 'logomenu', 'toolmenu','animemenu2','animemenu'];
-    handler.tags = ['main'];
-    handler.command = ['list', 'botmenu', 'ownermenu', 'groupmenu', 'dlmenu', 'downloadermenu', 'economymenu', 'funmenu', 'gamemenu', 'stickermenu', 'nsfwmenu', 'logomenu', 'toolmenu','animemenu2','animemenu'];
+    handler.help = ['list', 'botmenu', 'ownermenu', 'groupmenu', 'downloadmenu', 'economymenu', 'funmenu', 'gamemenu', 'stickermenu', 'logomenu', 'toolmenu','animemenu'];
+    handler.tags = ['list'];
+    handler.command = ['list', 'botmenu', 'ownermenu', 'groupmenu', 'dlmenu', 'downloadermenu', 'economymenu', 'funmenu', 'gamemenu', 'stickermenu', 'logomenu', 'toolmenu','animemenu'];
     
     export default handler
     

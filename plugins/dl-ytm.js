@@ -45,7 +45,7 @@ let handler = async (m, { conn, text, usedPrefix }) => {
   }
 };
 
-handler.help = ['search and dl'];
+handler.help = ['music'];
 handler.tags = ['downloader'];
 handler.command = ['ytm', 'music'];
 

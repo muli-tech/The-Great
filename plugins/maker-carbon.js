@@ -33,7 +33,7 @@ let handler = async (m, { conn, args }) => {
 };
 
 handler.help = ['carbon <code>'];
-handler.tags = ['tools'];
+handler.tags = ['maker'];
 handler.command = /^carbon$/i;
 
 export default handler;

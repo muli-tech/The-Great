@@ -26,7 +26,7 @@ let handler = async (m, { text, conn }) => {
     }
 }
 handler.help = ['get']
-handler.tags = ['tools']
+handler.tags = ['main']
 handler.command = /^(fetch|get)$/i
 
 export default handler

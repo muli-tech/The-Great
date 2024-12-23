@@ -2,16 +2,21 @@ import fetch from 'node-fetch';
 
 let handler = async (m) => {
   let message = m.quoted ? m.quoted : m;
-  let rawText = (message.text || '').trim();
+  let text = (message.text || '').trim();
+    // Step 2: Remove the special character and the following word (command + space)
+  text = text.replace(/^[^\w\s]+(\w+)\s*/, '');
 
-  if (!rawText) {
+  // Step 3: Trim any remaining leading/trailing spaces from the actual message
+  text = text.trim();
+
+  /* if (!text) {
     throw "✳️ Please provide a prompt for the AI to generate an image.";
-  }
+  } */
 
   // Trim the command portion from the text
-  let text = rawText.indexOf(' ') >= 0
+  /* let text = rawText.indexOf(' ') >= 0
     ? rawText.slice(rawText.indexOf(' ') + 1).trim() // Remove up to the first space
-    : rawText.slice(9).trim(); // Fallback: Remove the first 9 characters
+    : rawText.slice(9).trim(); // Fallback: Remove the first 9 characters */
 
   if (!text) {
     throw "✳️ The prompt after the command cannot be empty.";

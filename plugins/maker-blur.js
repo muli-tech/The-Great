@@ -4,7 +4,7 @@ let handler = async (m, { conn, usedprefix }) => {
     avatar: await conn.profilePictureUrl(who, 'image').catch(_ => 'https://telegra.ph/file/24fa902ead26340f3df2c.png'),
     }), 'hornycard.png', '*[ ✔ ]*', m)
     }
-    handler.help = ['blur']
+    handler.help = ['blurdp']
     handler.tags = ['maker']
-    handler.command = /^(blur|difuminar2)$/i
+    handler.command = /^(blurdp)$/i
     export default handler

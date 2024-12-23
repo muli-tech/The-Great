@@ -68,7 +68,7 @@ let str = ` *☑️ ‖⫷※•şɐɱʉ•※⫸‖ ☑️*
 
 }
 handler.help = ['logo']
-handler.tags = ['group']
+handler.tags = ['main']
 handler.command = ['logo1', 'logos','ab logo','logo'] 
 
 export default handler

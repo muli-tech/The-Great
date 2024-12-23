@@ -15,7 +15,7 @@ const handler = async (m, { conn, args, usedPrefix, command }) => {
   try {
     const result = await fg.fbdl(args[0]);
     const tex = `
-⊱ ─── {* ‖⫷※•şɐɱʉ•※⫸‖ FBDL*} ─── ⊰
+⊱ ─── {*‖⫷※•şɐɱʉ•※⫸‖*} ─── ⊰
 ↳ *VIDEO TITLE:* ${result.title}
 ⊱ ────── {⋆♬⋆} ────── ⊰`;
 
@@ -38,3 +38,68 @@ handler.diamond = true;
 
 export default handler;
 
+// backup for facebook download not yet even tested
+
+/* import fetch from 'node-fetch';
+import fs from 'fs';
+import path from 'path';
+
+let handler = async (m) => {
+  let message = m.quoted ? m.quoted : m;
+  let url = (message.text || '').trim();
+
+  if (!url) {
+    throw "✳️ Please provide a valid URL.";
+  }
+
+  await m.react('⏳');
+  try {
+    // Fetch the response from the API
+    let response = await fetch(`https://bk9.fun/download/alldownload?url=${encodeURIComponent(url)}`);
+    let res = await response.json();
+
+    // Validate response success and extract the high-quality URL
+    if (!res.status || !res.BK9 || !res.BK9.high) {
+      throw "❌ No high-quality download URL found in the API response.";
+    }
+
+    let highQualityUrl = res.BK9.high;
+
+    // React with a success emoji
+    await m.react('✅');
+
+    // Download the file
+    let fileResponse = await fetch(highQualityUrl);
+    let buffer = await fileResponse.buffer();
+
+    // Define a temporary file path
+    let tempFilePath = path.join(__dirname, 'tempfile');
+
+    // Save the file to disk temporarily
+    fs.writeFileSync(tempFilePath, buffer);
+
+    // Send the file to the user
+    await conn.sendMessage(
+      m.chat,
+      {
+        document: { url: tempFilePath },
+        fileName: res.BK9.title || 'downloaded_file',
+      },
+      {
+        quoted: m,
+      }
+    );
+
+    // Delete the temporary file after sending
+    fs.unlinkSync(tempFilePath);
+  } catch (error) {
+    await m.react('❌');
+    throw error;
+  }
+};
+
+handler.help = ['fb <url>'];
+handler.tags = ['tools'];
+handler.command = /^(fbdl|fb|facebook)$/i;
+
+export default handler; */

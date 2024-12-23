@@ -95,7 +95,7 @@ export async function handler(chatUpdate) {
       let chat = global.db.data.chats[m.chat]
       if (typeof chat !== 'object') global.db.data.chats[m.chat] = {}
       if (chat) {
-        if (!('antiDelete' in chat)) chat.antiDelete = true
+        if (!('antidelete' in chat)) chat.antidelete = false
         if (!('antiLink' in chat)) chat.antiLink = false
         if (!('antiSticker' in chat)) chat.antiSticker = false
         if (!('antiToxic' in chat)) chat.antiToxic = false
@@ -116,7 +116,7 @@ export async function handler(chatUpdate) {
         if (!isNumber(chat.expired)) chat.expired = 0
       } else
         global.db.data.chats[m.chat] = {
-          antiDelete: true,
+          antidelete: false,
           antiLink: false,
           antiSticker: false,
           antiToxic: false,
@@ -509,7 +509,7 @@ export async function handler(chatUpdate) {
     } catch (e) {
       console.log(m, m.quoted, e)
     }
-    if (process.env.autoread) await conn.readMessages([m.key]) //incase things go south come back here
+    //if (process.env.autoread) await conn.readMessages([m.key]) //incase things go south come back here
     if (process.env.statusview && m.key.remoteJid === 'status@broadcast')
       await conn.readMessages([m.key])
   }
@@ -544,8 +544,8 @@ export async function participantsUpdate({ id, participants, action }) {
             ppgp = await this.profilePictureUrl(id, 'image')
           } catch (error) {
             console.error(`Error retrieving profile picture: ${error}`)
-            pp = 'https://telegra.ph/file/087410e10ba5b08083295.jpg' // Assign default image URL
-            ppgp = 'https://telegra.ph/file/087410e10ba5b08083295.jpg' // Assign default image URL
+            pp = 'https://i.imgur.com/MTHXjf3.jpeg' // Assign default image URL
+            ppgp = 'https://i.imgur.com/MTHXjf3.jpeg' // Assign default image URL
           } finally {
             let text = (chat.sWelcome || this.welcome || conn.welcome || 'Welcome, @user')
               .replace('@group', await this.getName(id))
@@ -562,7 +562,7 @@ export async function participantsUpdate({ id, participants, action }) {
             )}&memberCount=${encodeURIComponent(
               nthMember.toString()
             )}&avatar=${encodeURIComponent(pp)}&background=${encodeURIComponent(
-              'https://telegra.ph/file/087410e10ba5b08083295.jpg'
+              'https://i.imgur.com/MTHXjf3.jpeg'
             )}`
 
             try {
@@ -601,8 +601,8 @@ export async function participantsUpdate({ id, participants, action }) {
             ppgp = await this.profilePictureUrl(id, 'image')
           } catch (error) {
             console.error(`Error retrieving profile picture: ${error}`)
-            pp = 'https://telegra.ph/file/087410e10ba5b08083295.jpg' // Assign default image URL
-            ppgp = 'https://telegra.ph/file/087410e10ba5b08083295.jpg' // Assign default image URL
+            pp = 'https://i.imgur.com/MTHXjf3.jpeg' // Assign default image URL
+            ppgp = 'https://i.imgur.com/MTHXjf3.jpeg' // Assign default image URL
           } finally {
             let text = (chat.sBye || this.bye || conn.bye || 'HELLO, @user').replace(
               '@user',
@@ -619,7 +619,7 @@ export async function participantsUpdate({ id, participants, action }) {
             )}&memberCount=${encodeURIComponent(
               nthMember.toString()
             )}&avatar=${encodeURIComponent(pp)}&background=${encodeURIComponent(
-              'https://telegra.ph/file/087410e10ba5b08083295.jpg'
+              'https://i.imgur.com/MTHXjf3.jpeg'
             )}`
 
             try {

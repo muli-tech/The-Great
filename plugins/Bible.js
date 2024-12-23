@@ -1,65 +1,31 @@
-import fetch from 'node-fetch';
-import { translate } from '@vitalets/google-translate-api';
+import axios from 'axios';
 
-const BASE_URL = 'https://bible-api.com';
+let handler = async (m, { usedPrefix, command, text }) => {
+    if (!text) throw `🚩 Please specify a verse! Usage:\n\n*${usedPrefix + command} <book chapter:verse>*\n\nExample:\n${usedPrefix + command} John 3:16`;
 
-let bibleChapterHandler = async (m, { conn }) => {
-  try {
-    
-    let chapterInput = m.text.split(' ').slice(1).join('').trim();
+    try {
+        // Fetch the verse from the API
+        const response = await axios.get(`https://bible-api.com/${encodeURIComponent(text)}`);
+        const data = response.data;
 
-    if (!chapterInput) {
-      throw new Error(`Please specify the chapter number or name. Example: -bible john 3:16`);
+        // Extract the necessary fields
+        const reference = data.reference;
+        const verseText = data.text.trim();
+        const translationName = data.translation_name;
+
+        // Construct the reply
+        const reply = `📖 *Reference:* ${reference}\n\n✝️ *Verse:*\n"${verseText}"\n\n📝 *Translation:* ${translationName}`;
+        m.reply(reply);
+    } catch (e) {
+        console.error(e);
+        m.reply("❌ An error occurred while fetching the Bible verse. Please ensure the reference is correct (e.g., John 3:16).");
     }
-
-  
-    chapterInput = encodeURIComponent(chapterInput);
-
-  
-    let chapterRes = await fetch(`${BASE_URL}/${chapterInput}`);
-    
-    if (!chapterRes.ok) {
-      throw new Error(`Unable to fetch the chapter. Please check the input. Example: -bible john 3:16`);
-    }
-
-    let chapterData = await chapterRes.json();
-
-    
-    let translatedChapterHindi = await translate(chapterData.text, { to: 'hi', autoCorrect: true });
-    let translatedChapterEnglish = await translate(chapterData.text, { to: 'en', autoCorrect: true });
-
-   
-    let bibleChapter = `
-📖 *The Holy Bible*\n
-📜 *Chapter:* ${chapterData.reference}\n
-Type: ${chapterData.translation_name}\n
-Number of verses: ${chapterData.verses.length}\n
-🔮 *Chapter Content (English):*\n
-${translatedChapterEnglish.text}\n
-🔮 *Chapter Content (Hindi):*\n
-${translatedChapterHindi.text}
-    `.trim();
-
-    
-    await conn.sendMessage(m.chat, {
-      text: bibleChapter,
-      contextInfo: {
-        externalAdReply: {
-          title: "The Holy Bible",
-          body: `Chapter: ${chapterData.reference}`,
-          thumbnailUrl: "https://telegra.ph/file/403a47e628ef49dee27a3.jpg", 
-          sourceUrl: "https://bible-api.com", 
-        }
-      }
-    }, { quoted: m });
-  } catch (error) {
-    console.error(error);
-    m.reply(`Error: ${error.message}`);
-  }
 };
 
-bibleChapterHandler.help = ['bible [chapter_number|chapter_name]'];
-bibleChapterHandler.tags = ['religion'];
-bibleChapterHandler.command = ['bible', 'chapter'];
+// Command metadata
+handler.command = ['bibleverse', 'verse', 'inspire', 'bible', 'bv'];
+handler.tags = ['religion'];
+handler.help = ['bible <book chapter:verse>'].map(cmd => `${cmd}`);
+handler.limit = false;
 
-export default bibleChapterHandler;
+export default handler;

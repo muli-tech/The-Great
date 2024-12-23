@@ -1,45 +1,56 @@
 import fetch from 'node-fetch';
 
-let handler = async (m, { args }) => {
-  // Extract the query from the user's input
-  if (!args || args.length === 0) {
-    return m.reply("Please provide a search query for images.");
+let handler = async (m) => {
+  let message = m.quoted ? m.quoted : m;
+  let text = (message.text || '').trim();
+    // Step 2: Remove the special character and the following word (command + space)
+  text = text.replace(/^[^\w\s]+(\w+)\s*/, '');
+
+  // Step 3: Trim any remaining leading/trailing spaces from the actual message
+  text = text.trim();
+
+  if (!text) {
+    throw "✳️ Please provide text for the AI to process.";
   }
 
-  const query = args.join(" ");
-  const apiKey = "gifted";
-  const endpoint = `https://api.giftedtech.my.id/api/search/googleimage?apikey=${apiKey}&query=${encodeURIComponent(query)}`;
+  await m.react('⏳');
+  try {
+    // Fetch the response from the API
+    let response = await fetch(`https://api.giftedtech.my.id/api/search/googleimage?apikey=gifted&query=${encodeURIComponent(text)}`);
+    let res = await response.json();
 
-  //try {
-    // Send a GET request to the API
-    const response = await fetch(endpoint);
-    const result = await response.json();
+    // React with a success emoji
+    await m.react('✅');
 
-    if (!response.ok || result.error) {
-      return m.reply("Failed to fetch image search results. Please try again later.");
+    // Validate response success and extract images
+    if (!res.success || !res.results || res.results.length === 0) {
+      throw "❌ No images found in the API response.";
     }
 
-    // Check if results were found
-    if (!result.data || result.data.length === 0) {
-      return m.reply("No images found for the given query.");
+    // Shuffle the images and limit to 4
+    let images = res.results.sort(() => 0.5 - Math.random()).slice(0, 4);
+    //m.reply(text) // set it to help me to debug the text trim 
+    // Send the images (up to 4) to the user
+    for (let imageUrl of images) {
+      await conn.sendMessage(
+        m.chat,
+        {
+          image: { url: imageUrl },
+          caption: `googled Image for: "${text}"`,
+        },
+        {
+          quoted: m,
+        }
+      );
     }
-
-    // Format the response for the user
-    const firstImage = result.data[0]; // Assuming the first result is the most relevant
-    const replyMessage = `🔍 *Image Search Result for:* "${query}"\n\n![Image](${firstImage.url})\n\n*Title:* ${firstImage.title}`;
-
-    // Send the reply to the user with the image
-    await m.reply(replyMessage);
-
-  } /* catch (error) {
-    console.error("Error fetching image search results:", error);
-    m.reply("An error occurred while fetching the image results. Please try again later.");
+  } catch (error) {
+    await m.react('❌');
+    throw error;
   }
-}; */
+};
 
-// Command metadata
-handler.help = ["img"];
-handler.tags = ["img"];
-handler.command = /^(img)$/i;
+handler.help = ['googleimg <query>'];
+handler.tags = ['img'];
+handler.command = /^(googleimg|gimg)$/i;
 
 export default handler;
