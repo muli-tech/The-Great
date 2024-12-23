@@ -509,6 +509,7 @@ export async function handler(chatUpdate) {
     } catch (e) {
       console.log(m, m.quoted, e)
     }
+    
     //if (process.env.autoread) await conn.readMessages([m.key]) //incase things go south come back here
     if (process.env.statusview && m.key.remoteJid === 'status@broadcast')
       await conn.readMessages([m.key])
