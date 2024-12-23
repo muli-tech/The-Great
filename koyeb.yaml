@@ -8,6 +8,10 @@ RUN dnf -y update && \
     dnf install -y git ffmpeg ImageMagick libwebp yarnpkg && \
     dnf clean all -y
 
+#install yarn just incase
+RUN curl -sL https://dl.yarnpkg.com/rpm/yarn.repo | tee /etc/yum.repos.d/yarn.repo
+RUN dnf install -y yarn
+
 #unistall nodejs
 RUN dnf -y remove nodejs
 
@@ -22,8 +26,12 @@ RUN git clone https://github.com/muli-tech/The-Great
 # Set the working directory
 WORKDIR /The-Great
 
-# Install dependencies
-RUN yarn install
+# Install dependencies (try yarn first, then npm if yarn is not found)
+RUN if command -v yarn &> /dev/null; then \
+    yarn install; \
+    else \
+    npm install; \
+    fi
 
 # Run the application
 CMD ["node", "index.js"]
