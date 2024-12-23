@@ -8,6 +8,9 @@ RUN dnf -y update && \
     dnf install -y git ffmpeg ImageMagick libwebp yarnpkg && \
     dnf clean all -y
 
+#unistall nodejs
+sudo dnf remove nodejs
+
 # Install Node.js 20 from NodeSource
 RUN curl -sL https://rpm.nodesource.com/setup_20.x | bash - && \
     dnf install -y nodejs && \
