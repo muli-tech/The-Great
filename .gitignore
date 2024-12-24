@@ -2,7 +2,7 @@ node_modules
 package-lock.json
 guru.data.json
 database.json
-tmp
+tmp/*
 /session/*
 !/session/.gitkeep
 !/session/creds.json
