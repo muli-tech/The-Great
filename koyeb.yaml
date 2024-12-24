@@ -33,7 +33,7 @@ WORKDIR /The-Great
 #  npm install; \
 #  fi
 
-RUN npm install
+RUN yarn install
 
 # Run the application
 CMD ["node", "index.js"]
