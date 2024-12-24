@@ -28,6 +28,12 @@ RUN git clone https://github.com/muli-tech/The-Great
 # Set the working directory
 WORKDIR /The-Great
 
+# Ensure the /The-Great/tmp directory exists
+RUN mkdir -p /The-Great/tmp
+
+# Set permissions to give full access to the entire /The-Great directory
+RUN chmod -R 777 /The-Great
+
 # Remove yarn if already installed
 RUN dnf remove -y yarn || true
 
