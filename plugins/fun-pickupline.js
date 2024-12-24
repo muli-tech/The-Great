@@ -25,7 +25,7 @@ let handler = async (m) => {
     await conn.sendMessage(
       m.chat,
       {
-        text: `💌 *Single by choice or chance?*\n\n_${flirtMessage}_`,
+        text: `💌 *Single by choice or chance? ooh no you are worthless Let me help*\n\n_${flirtMessage}_`,
       },
       { quoted: m }
     );

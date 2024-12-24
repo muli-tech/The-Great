@@ -399,22 +399,38 @@ async function connectionUpdate(update) {
   if (!pairingCode && useQr && qr != 0 && qr != undefined) {
     conn.logger.info(chalk.yellow('\nLogging in....'))
   }
-  if (connection === 'open') {
-    const { jid, name } = conn.user
 
- const msg = `Hi🤩${name} Congrats you have successfully deployed ‖⫷※•şɐɱʉ•※⫸‖  BOT\nJoin my support group for any Query\n https://chat.whatsapp.com/FV96nX6l7iCGmBeunOFPa0`
+        //check this one out in the next launch
+        let welcomeMessageSent = false;
 
-    await conn.sendMessage(jid, { text: msg, mentions: [jid] }, { quoted: null })
-    
-    conn.logger.info(chalk.greenBright('\n🟢 R E A D Y'))
-  }
+        if (connection === 'open' && !welcomeMessageSent) {
+            const { jid, name } = conn.user;
+            const msg = `Hi🤩${name} Congrats you have successfully deployed ‖⫷※•şɐɱʉ•※⫸‖ BOT\nJoin my support group for any Query\n https://chat.whatsapp.com/FV96nX6l7iCGmBeunOFPa0`;
 
-  if (connection == 'close') {
-    conn.logger.error(chalk.yellow(`\nconnection closed....Get a New Session`))
-  }
-}
+            try {
+                await conn.sendMessage(jid, { text: msg, mentions: [jid] }, { quoted: null });
+                welcomeMessageSent = true;
+                conn.logger.info(chalk.greenBright('\n🟢 R E A D Y'));
+            } catch (error) {
+                conn.logger.error(chalk.red(`Failed to send welcome message: ${error.message}`));
+            }
+        }
 
-process.on('uncaughtException', console.error)
+        if (connection === 'close') {
+            conn.logger.error(chalk.yellow(`\nconnection closed....Get a New Session`));
+            welcomeMessageSent = false; // Reset the flag when connection is closed
+        }
+
+        // Error handling for connection issues
+        process.on('unhandledRejection', (reason, promise) => {
+            conn.logger.error(chalk.red(`Unhandled Rejection at: ${promise}, reason: ${reason}`));
+        });
+
+        process.on('uncaughtException', (error) => {
+            conn.logger.error(chalk.red(`Uncaught Exception: ${error.message}`));
+        });
+        }
+
 
 let isInit = true
 let handler = await import('./handler.js')

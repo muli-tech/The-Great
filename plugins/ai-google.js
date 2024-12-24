@@ -39,7 +39,7 @@ let handler = async (m, { args }) => {
 
 // Command metadata
 handler.help = ["google"];
-handler.tags = ["search"];
+handler.tags = ["AI"];
 handler.command = /^(google)$/i;
 
 export default handler;

@@ -181,8 +181,8 @@ let handler = async (m, { conn }) => {
   }
 }
 
-//handler.help = ['discord', 'welcome', 'gay', 'imposter', 'rip', 'wasted', 'phub', 'trash', 'ohno', 'clyde', 'ko', 'facepalm', 'youtube', 'imposterwith', 'captcha', 'jail', 'hitler', 'triggered', 'spank', 'punch', 'snowflake', 'beautiful', 'bed', 'affect', 'wanted', 'batslap', 'kiss', 'online'];
+handler.help = ['gay', 'wasted','jail'];
 handler.tags = ['fun'];
-handler.command = ['discord', 'welcome', 'gay', 'imposter', 'rip', 'wasted', 'phub', 'trash', 'ohno', 'clyde', 'ko', 'facepalm', 'youtube', 'imposterwith', 'captcha', 'jail', 'hitler', 'triggered', 'spank', 'punch', 'snowflake', 'beautiful', 'bed', 'affect', 'wanted', 'batslap', 'kiss', 'online'];
+handler.command = ['gay', 'wasted','jail'];
 
 export default handler;
